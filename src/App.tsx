@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
@@ -29,6 +30,7 @@ export default function App() {
         <Footer />
         <FloatingActions />
       </div>
+      <SpeedInsights />
     </>
   );
 }
