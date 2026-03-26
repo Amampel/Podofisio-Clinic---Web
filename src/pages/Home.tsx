@@ -1,6 +1,7 @@
+"use client";
 import { motion } from 'motion/react';
 import { ArrowRight, ShieldCheck, Microscope, Activity } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from "next/link";
 import Hero from '../components/Hero';
 import SEO from '../components/SEO';
 
@@ -117,13 +118,13 @@ export default function Home() {
           </h2>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link
-              to="/servicios"
+              href="/servicios"
               className="bg-white text-background px-12 py-5 rounded-xl font-headline font-extrabold uppercase tracking-widest text-xs hover:bg-secondary transition-all flex items-center justify-center gap-3"
             >
               Explorar Servicios <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              to="/contacto"
+              href="/contacto"
               className="border border-white/10 text-white px-12 py-5 rounded-xl font-headline font-extrabold uppercase tracking-widest text-xs hover:bg-white/5 transition-all"
             >
               Reservar Cita

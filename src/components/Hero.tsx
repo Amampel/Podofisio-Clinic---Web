@@ -1,6 +1,7 @@
+"use client";
 import { motion } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -65,10 +66,10 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <Link to="/contacto" className="w-full sm:w-auto bg-primary text-background px-10 py-4 rounded-md font-headline font-bold text-xs uppercase tracking-widest hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all text-center">
+          <Link href="/contacto" className="w-full sm:w-auto bg-primary text-background px-10 py-4 rounded-md font-headline font-bold text-xs uppercase tracking-widest hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all text-center">
             Agenda tu cita
           </Link>
-          <Link to="/servicios" className="w-full sm:w-auto border border-outline-variant text-white px-10 py-4 rounded-md font-headline font-bold text-xs uppercase tracking-widest hover:bg-white/5 transition-all text-center">
+          <Link href="/servicios" className="w-full sm:w-auto border border-outline-variant text-white px-10 py-4 rounded-md font-headline font-bold text-xs uppercase tracking-widest hover:bg-white/5 transition-all text-center">
             Ver servicios
           </Link>
         </motion.div>

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
           <div className="col-span-1 md:col-span-1">
-            <Link to="/" className="text-lg font-black text-white mb-4 block font-headline tracking-tighter uppercase">Podofisio Clinic</Link>
+            <Link href="/" className="text-lg font-black text-white mb-4 block font-headline tracking-tighter uppercase">Podofisio Clinic</Link>
             <p className="font-body text-sm leading-relaxed text-neutral-400">
               Cuidado avanzado para tus pies y extremidad inferior. Tecnología y profesionalismo en el corazón de Terrassa.
             </p>
@@ -15,10 +15,10 @@ export default function Footer() {
           <div>
             <span className="text-xs font-bold text-white uppercase tracking-widest mb-6 block">Navegación</span>
             <ul className="space-y-4">
-              <li><Link to="/servicios" className="text-sm text-neutral-400 hover:text-white transition-colors">Servicios</Link></li>
-              <li><Link to="/nosotros" className="text-sm text-neutral-400 hover:text-white transition-colors">Nosotros</Link></li>
-              <li><Link to="/tarifas" className="text-sm text-neutral-400 hover:text-white transition-colors">Tarifas</Link></li>
-              <li><Link to="/blog" className="text-sm text-neutral-400 hover:text-white transition-colors">Blog</Link></li>
+              <li><Link href="/servicios" className="text-sm text-neutral-400 hover:text-white transition-colors">Servicios</Link></li>
+              <li><Link href="/nosotros" className="text-sm text-neutral-400 hover:text-white transition-colors">Nosotros</Link></li>
+              <li><Link href="/tarifas" className="text-sm text-neutral-400 hover:text-white transition-colors">Tarifas</Link></li>
+              <li><Link href="/blog" className="text-sm text-neutral-400 hover:text-white transition-colors">Blog</Link></li>
             </ul>
           </div>
 

@@ -1,6 +1,7 @@
+"use client";
 import { motion } from 'motion/react';
 import { Verified } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from "next/link";
 
 export default function Pricing() {
   return (
@@ -118,7 +119,7 @@ export default function Pricing() {
                 <p className="text-on-surface-variant text-sm leading-relaxed mb-6 font-light italic">
                   * Los precios de cirugía y ortesis complejas pueden variar según la técnica y materiales. Se entregará presupuesto cerrado tras la valoración.
                 </p>
-                <Link to="/contacto" className="text-secondary text-xs font-bold uppercase tracking-widest border-b border-secondary/30 hover:border-secondary transition-all pb-1">Solicitar presupuesto personalizado</Link>
+                <Link href="/contacto" className="text-secondary text-xs font-bold uppercase tracking-widest border-b border-secondary/30 hover:border-secondary transition-all pb-1">Solicitar presupuesto personalizado</Link>
               </motion.div>
             </div>
           </motion.div>

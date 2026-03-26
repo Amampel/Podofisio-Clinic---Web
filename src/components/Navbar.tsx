@@ -1,13 +1,15 @@
+"use client";
 import { motion } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { cn } from '../lib/utils';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -28,11 +30,11 @@ export default function Navbar() {
     <nav
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-500",
-        isScrolled || location.pathname !== '/' ? "glass-nav py-4" : "bg-transparent py-6"
+        isScrolled || pathname !== '/' ? "glass-nav py-4" : "bg-transparent py-6"
       )}
     >
       <div className="max-w-screen-2xl mx-auto px-8 flex justify-between items-center">
-        <Link to="/" className="text-xl font-black tracking-tighter text-white font-headline uppercase">
+        <Link href="/" className="text-xl font-black tracking-tighter text-white font-headline uppercase">
           Podofisio Clinic
         </Link>
 
@@ -41,16 +43,16 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <Link
               key={`desktop-${link.name}`}
-              to={link.href}
+              href={link.href}
               className={cn(
                 "font-headline font-bold tracking-tight text-xs uppercase transition-colors",
-                location.pathname === link.href ? "text-white" : "text-neutral-400 hover:text-white"
+                pathname === link.href ? "text-white" : "text-neutral-400 hover:text-white"
               )}
             >
               {link.name}
             </Link>
           ))}
-          <Link to="/contacto" className="bg-primary text-background px-6 py-2 rounded-md font-headline font-bold text-xs uppercase tracking-widest hover:bg-white/90 transition-all active:scale-95">
+          <Link href="/contacto" className="bg-primary text-background px-6 py-2 rounded-md font-headline font-bold text-xs uppercase tracking-widest hover:bg-white/90 transition-all active:scale-95">
             Agenda tu cita
           </Link>
         </div>
@@ -74,18 +76,18 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <Link
               key={`mobile-${link.name}`}
-              to={link.href}
+              href={link.href}
               onClick={() => setIsMobileMenuOpen(false)}
               className={cn(
                 "font-headline font-bold tracking-tight text-lg transition-colors",
-                location.pathname === link.href ? "text-white" : "text-neutral-400 hover:text-white"
+                pathname === link.href ? "text-white" : "text-neutral-400 hover:text-white"
               )}
             >
               {link.name}
             </Link>
           ))}
           <Link
-            to="/contacto"
+            href="/contacto"
             onClick={() => setIsMobileMenuOpen(false)}
             className="bg-primary text-background px-6 py-4 rounded-md font-headline font-bold text-sm uppercase tracking-widest text-center"
           >

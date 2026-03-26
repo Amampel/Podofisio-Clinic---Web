@@ -1,6 +1,7 @@
+"use client";
 import { motion, useAnimation, useMotionValue } from 'motion/react';
 import { ArrowRight, Activity, Zap, Radio, Footprints, Scan } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from "next/link";
 import { useEffect, useRef, useState } from 'react';
 
 const services = [
@@ -163,7 +164,7 @@ export default function Services() {
                   <p className="text-neutral-400 font-light leading-relaxed text-base">{service.description}</p>
                 </div>
 
-                <Link to="/contacto" className="text-white font-bold text-xs uppercase tracking-widest flex items-center gap-3 group-hover:gap-5 transition-all pointer-events-auto">
+                <Link href="/contacto" className="text-white font-bold text-xs uppercase tracking-widest flex items-center gap-3 group-hover:gap-5 transition-all pointer-events-auto">
                   Solicitar información <ArrowRight className="w-4 h-4 text-secondary" />
                 </Link>
               </div>
