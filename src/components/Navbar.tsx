@@ -16,7 +16,7 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '/' },
+    { name: 'INICIO', href: '/' },
     { name: 'Servicios', href: '/servicios' },
     { name: 'Nosotros', href: '/nosotros' },
     { name: 'Tarifas', href: '/tarifas' },
