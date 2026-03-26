@@ -1,0 +1,49 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+@theme {
+  --font-headline: "Manrope", sans-serif;
+  --font-body: "Inter", sans-serif;
+  
+  --color-background: #131313;
+  --color-surface-lowest: #0e0e0e;
+  --color-surface-low: #1b1b1b;
+  --color-surface: #1f1f1f;
+  --color-surface-bright: #393939;
+  --color-primary: #ffffff;
+  --color-secondary: #c6c6cb;
+  --color-on-surface-variant: #c6c6c6;
+  --color-outline-variant: #474747;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-primary font-body antialiased selection:bg-primary selection:text-background;
+  }
+}
+
+@layer components {
+  .glass-nav {
+    @apply bg-neutral-950/60 backdrop-blur-xl border-b border-white/5;
+  }
+  
+  .glass-card {
+    @apply bg-surface/40 backdrop-blur-lg border border-white/5;
+  }
+  
+  .text-gradient {
+    @apply bg-linear-to-tr from-white to-secondary bg-clip-text text-transparent;
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+  }
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
