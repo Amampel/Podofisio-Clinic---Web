@@ -48,7 +48,7 @@ export default function Navbar() {
       >
         <div className="max-w-screen-2xl mx-auto px-8 flex justify-between items-center">
           <Link href="/" className="flex items-center">
-            <img src="/assets/images/podofisio_logo.png" alt="Podofisio Clinic Logo" className="h-8 md:h-10 w-auto scale-[0.8] md:scale-[1] origin-left" />
+            <img src="/assets/images/podofisio_logo.png" alt="Podofisio Clinic Logo" className="w-[160px] md:w-[200px] h-auto object-contain" />
           </Link>
 
           {/* Desktop Nav */}
@@ -94,7 +94,7 @@ export default function Navbar() {
             {/* Top Bar Inside Menu */}
             <div className="flex justify-between items-center w-full shrink-0">
               <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
-                <img src="/assets/images/podofisio_logo.png" alt="Podofisio Clinic Logo" className="h-8 md:h-10 w-auto scale-[0.8] md:scale-[1] origin-left" />
+                <img src="/assets/images/podofisio_logo.png" alt="Podofisio Clinic Logo" className="w-[160px] md:w-[200px] h-auto object-contain" />
               </Link>
 
               <button
