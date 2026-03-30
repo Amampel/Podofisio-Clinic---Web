@@ -3,32 +3,44 @@ import { motion } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
 import Link from "next/link";
 
+const VIDEO_ID = "AuqCXhA4pVQ";
+const YT_SRC = `https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1`;
+
 export default function Hero() {
   return (
     <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-surface-lowest">
-      {/* Background Video */}
+
+      {/* YouTube Background Video */}
       <div className="absolute inset-0 z-0">
+        {/* Dark overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background z-10" />
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover opacity-30 grayscale contrast-125"
-        >
-          <source
-            src="https://podofisioclinic.com/wp-content/uploads/2026/03/5794352_Coll_wavebreak_Physio_1920x1080.mp4"
-            type="video/mp4"
-          />
-          {/* Fallback image if video fails */}
-          <img
-            src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053&auto=format&fit=crop"
-            alt="Clinical background"
-            className="w-full h-full object-cover"
-          />
-        </video>
+
+        {/* YouTube iframe — covers the full section regardless of screen ratio */}
+        <iframe
+          src={YT_SRC}
+          title="Podofisio Clinic background video"
+          allow="autoplay; encrypted-media"
+          allowFullScreen={false}
+          tabIndex={-1}
+          aria-hidden="true"
+          className="pointer-events-none absolute"
+          style={{
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            /* Fill the container keeping 16:9 ratio */
+            width: '177.78vh',   /* 100 * 16/9 */
+            height: '100vh',
+            minWidth: '100%',
+            minHeight: '56.25vw', /* 100 * 9/16 */
+            opacity: 0.35,
+            filter: 'grayscale(1) contrast(1.2)',
+            border: 'none',
+          }}
+        />
       </div>
 
+      {/* Hero Content */}
       <div className="relative z-20 text-center max-w-5xl px-6 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -37,7 +49,7 @@ export default function Hero() {
           className="mb-4 md:mb-6 inline-block"
         >
           <span className="font-headline text-[10px] md:text-xs uppercase tracking-[0.4em] text-secondary font-bold">
-            Podología & Fisioterapia de Vanguardia en Terrassa
+            Podología &amp; Fisioterapia de Vanguardia en Terrassa
           </span>
         </motion.div>
 
@@ -66,10 +78,16 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <Link href="/contacto" className="w-full sm:w-auto bg-primary text-background px-10 py-4 rounded-md font-headline font-bold text-xs uppercase tracking-widest hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all text-center">
+          <Link
+            href="/contacto"
+            className="w-full sm:w-auto bg-primary text-background px-10 py-4 rounded-md font-headline font-bold text-xs uppercase tracking-widest hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all text-center"
+          >
             Agenda tu cita
           </Link>
-          <Link href="/servicios" className="w-full sm:w-auto border border-outline-variant text-white px-10 py-4 rounded-md font-headline font-bold text-xs uppercase tracking-widest hover:bg-white/5 transition-all text-center">
+          <Link
+            href="/servicios"
+            className="w-full sm:w-auto border border-outline-variant text-white px-10 py-4 rounded-md font-headline font-bold text-xs uppercase tracking-widest hover:bg-white/5 transition-all text-center"
+          >
             Ver servicios
           </Link>
         </motion.div>

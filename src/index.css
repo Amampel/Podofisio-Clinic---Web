@@ -47,3 +47,10 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+body.mobile-menu-open .floating-actions-container {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}

@@ -4,7 +4,7 @@ import { Phone, MessageCircle } from 'lucide-react';
 
 export default function FloatingActions() {
   return (
-    <div className="fixed bottom-8 right-8 z-50 flex flex-col gap-4">
+    <div className="fixed bottom-8 right-8 z-[50] flex flex-col gap-4 floating-actions-container">
       <AnimatePresence>
         {/* WhatsApp Button */}
         <motion.a

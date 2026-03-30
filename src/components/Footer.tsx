@@ -6,7 +6,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
           <div className="col-span-1 md:col-span-1">
-            <Link href="/" className="text-lg font-black text-white mb-4 block font-headline tracking-tighter uppercase">Podofisio Clinic</Link>
+            <Link href="/" className="mb-6 block">
+              <img src="/assets/images/podofisio_logo.png" alt="Podofisio Clinic Logo" className="h-16 w-auto grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-300" />
+            </Link>
             <p className="font-body text-sm leading-relaxed text-neutral-400">
               Cuidado avanzado para tus pies y extremidad inferior. Tecnología y profesionalismo en el corazón de Terrassa.
             </p>
