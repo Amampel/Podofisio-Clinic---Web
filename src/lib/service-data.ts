@@ -19,6 +19,12 @@ export interface ServiceFaq {
   answer: string;
 }
 
+export interface SubServiceCard {
+  slug: string;
+  title: string;
+  description: string;
+}
+
 export interface ServiceData {
   slug: string;
   number: string;
@@ -36,602 +42,915 @@ export interface ServiceData {
   keywords: string[];
   metaDescription: string;
   relatedServices: string[];
+  parentSlug?: string;
+  parentTitle?: string;
+  subServices?: SubServiceCard[];
 }
 
-export const services: ServiceData[] = [
+export const allServices: ServiceData[] = [
+  // ─────────────────────────────────────────────────────────────────
+  // 01 · ECOGRAFÍA
+  // ─────────────────────────────────────────────────────────────────
   {
-    slug: 'ecografia-clinica',
+    slug: 'ecografia',
     number: '01',
-    category: 'Diagnóstico de Precisión',
-    title: 'Ecografía Clínica',
-    subtitle: 'Visualización en tiempo real para un diagnóstico certero y sin radiación.',
+    category: 'Diagnóstico',
+    title: 'Ecografía',
+    subtitle: 'Diagnóstico por imagen en tiempo real',
     description:
-      'La ecografía musculoesquelética de alta resolución nos permite visualizar tendones, ligamentos, músculos y estructuras del pie y tobillo en tiempo real, ofreciendo un diagnóstico preciso en la misma consulta.',
+      'La ecografía musculoesquelética de alta resolución permite visualizar tendones, ligamentos y estructuras del pie en tiempo real, obteniendo un diagnóstico preciso, sin radiación y en la misma consulta.',
     image:
       'https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2070&auto=format&fit=crop',
     stats: [
       { value: 'Alta resolución', label: 'Imagen diagnóstica' },
       { value: 'Sin radiación', label: 'Seguro al 100%' },
       { value: 'Mismo día', label: 'Diagnóstico inmediato' },
-      { value: '+2.000/año', label: 'Ecografías realizadas' },
+      { value: '+2000 / año', label: 'Ecografías realizadas' },
     ],
     overview:
-      'La ecografía clínica musculoesquelética es una de las herramientas diagnósticas más potentes con las que cuenta nuestro equipo en Podofisio Clinic Terrassa. A diferencia de la radiografía convencional, la ecografía permite visualizar tejidos blandos —tendones, ligamentos, músculos, bursas y nervios— con una resolución milimétrica y en tiempo real, sin exponer al paciente a ningún tipo de radiación ionizante. Esta tecnología nos permite confirmar o descartar patologías de forma inmediata durante la primera visita, evitando esperas innecesarias y orientando el tratamiento desde el primer momento. Además, la exploración dinámica —es decir, observar la estructura mientras el paciente la mueve— añade una dimensión diagnóstica imposible de obtener con la resonancia magnética estática. En Terrassa, ofrecemos este servicio integrado en la consulta podológica y fisioterapéutica, lo que nos convierte en un referente regional en diagnóstico clínico avanzado del pie y tobillo.',
+      'La ecografía musculoesquelética es una de las herramientas diagnósticas más potentes de las que disponemos en Podofisio Clinic Terrassa. A diferencia de la radiografía convencional, permite visualizar tejidos blandos —tendones, ligamentos, músculos, bursas y nervios— con resolución milimétrica y en tiempo real, sin exponer al paciente a ningún tipo de radiación ionizante. Esta capacidad nos permite confirmar o descartar patologías en la misma primera visita, evitando esperas innecesarias y orientando el tratamiento desde el primer minuto. La exploración dinámica —observar la estructura mientras el paciente la moviliza— añade una dimensión diagnóstica imposible de obtener con la resonancia magnética estática. Además, la ecografía es la herramienta de elección para guiar con precisión milimétrica procedimientos terapéuticos como la EPTE, las infiltraciones ecoguiadas o las punciones de PRP, minimizando el riesgo de daño a estructuras adyacentes y garantizando la máxima eficacia del tratamiento. En Podofisio Clinic integramos la ecografía en la práctica podológica y fisioterapéutica diaria, convirtiéndonos en un referente regional en diagnóstico clínico avanzado del pie, tobillo y extremidad inferior en Terrassa y el Vallès Occidental.',
     benefits: [
       {
         title: 'Diagnóstico en tiempo real',
         description:
-          'La imagen se genera de forma instantánea mientras el profesional explora la zona, permitiendo observar el comportamiento dinámico de tendones y ligamentos durante el movimiento.',
+          'La imagen se genera de forma instantánea mientras el profesional explora la zona, permitiendo observar el comportamiento dinámico de tendones y ligamentos durante el movimiento activo y pasivo.',
       },
       {
-        title: 'Guía de tratamientos invasivos',
+        title: 'Guía de procedimientos invasivos',
         description:
-          'La ecografía permite guiar con precisión milimétrica procedimientos como la EPI/EPTE, infiltraciones o punciones, minimizando el riesgo y maximizando la eficacia.',
+          'La ecografía permite dirigir con precisión milimétrica procedimientos como la EPTE, infiltraciones corticoides o punciones de PRP, minimizando riesgos y maximizando la eficacia terapéutica.',
       },
       {
         title: 'Sin radiación ionizante',
         description:
-          'Es una técnica completamente segura, sin contraindicaciones por exposición a radiación. Puede repetirse tantas veces como sea necesario sin riesgo para el paciente.',
+          'Técnica completamente inocua, sin contraindicaciones por exposición a radiación. Puede repetirse cuantas veces sea necesario para monitorizar la evolución del paciente.',
       },
       {
         title: 'Resultado inmediato en consulta',
         description:
-          'No hay que esperar días o semanas por un informe externo. El diagnóstico se obtiene y se comparte con el paciente en la misma sesión, acelerando el inicio del tratamiento.',
+          'El diagnóstico se obtiene y se comparte con el paciente en la misma sesión, acelerando el inicio del tratamiento adecuado sin esperar informes externos.',
       },
       {
-        title: 'Comparación bilateral',
+        title: 'Valoración dinámica y comparativa',
         description:
-          'Permite comparar la estructura sana con la afectada en el mismo momento, lo que aporta un contexto diagnóstico muy valioso para detectar asimetrías y degeneraciones.',
+          'Es posible explorar ambos lados del cuerpo de forma comparativa y valorar la estructura en distintas posiciones funcionales, ofreciendo información clínica de enorme valor.',
       },
       {
-        title: 'Detecta lo que el ojo clínico no ve',
+        title: 'Control evolutivo del tratamiento',
         description:
-          'Pequeñas roturas parciales, neuromas incipientes o bursas inflamadas son invisibles en la exploración manual pero claramente visibles con ecografía de alta resolución.',
+          'Permite repetir la exploración a lo largo del proceso terapéutico para verificar objetivamente la cicatrización tisular y la resolución de la lesión, ajustando el plan de tratamiento con datos reales.',
       },
     ],
     process: [
       {
         step: '01',
-        title: 'Anamnesis clínica',
+        title: 'Anamnesis y exploración física',
         description:
-          'Recogemos tu historial médico, antecedentes, tipo de actividad física y descripción detallada del dolor o molestia para orientar la exploración.',
+          'El profesional realiza una historia clínica detallada y una exploración manual de la zona afectada para orientar la exploración ecográfica hacia las estructuras de mayor interés clínico.',
       },
       {
         step: '02',
-        title: 'Exploración física',
+        title: 'Preparación y posicionamiento',
         description:
-          'Realizamos una valoración manual y funcional de la zona afectada para identificar los tejidos que requieren evaluación ecográfica.',
+          'El paciente se coloca en la posición óptima según la zona a explorar. Se aplica gel conductor sobre la piel para garantizar una imagen de alta calidad sin interferencias.',
       },
       {
         step: '03',
-        title: 'Ecografía diagnóstica',
+        title: 'Exploración ecográfica',
         description:
-          'Aplicamos el transductor de alta frecuencia sobre la zona y exploramos todas las estructuras relevantes, tanto en reposo como en movimiento.',
+          'El transductor de alta frecuencia recorre sistemáticamente la zona de interés en planos longitudinal y transversal. Se realizan maniobras dinámicas para valorar la función de la estructura en movimiento.',
       },
       {
         step: '04',
-        title: 'Informe clínico',
+        title: 'Análisis e interpretación de la imagen',
         description:
-          'Elaboramos un informe con las imágenes más representativas y los hallazgos diagnósticos, que el paciente recibe en formato digital.',
+          'El especialista analiza en tiempo real las características del tejido —grosor, ecogenicidad, vascularización, integridad estructural— e identifica hallazgos patológicos con precisión.',
       },
       {
         step: '05',
-        title: 'Plan terapéutico',
+        title: 'Informe y plan de tratamiento',
         description:
-          'Con el diagnóstico confirmado, diseñamos un plan de tratamiento personalizado y explicamos al paciente cada paso del proceso de recuperación.',
+          'Se entrega al paciente un informe diagnóstico con imágenes representativas y se explica el hallazgo de forma comprensible. Se diseña el plan terapéutico más adecuado basado en los resultados obtenidos.',
       },
     ],
     conditions: [
-      'Fascitis Plantar',
+      'Fascitis plantar',
       'Tendinopatía de Aquiles',
       'Neuroma de Morton',
       'Bursitis',
-      'Roturas musculares',
-      'Lesiones ligamentosas',
-      'Espolón Calcáneo',
+      'Rotura muscular',
+      'Lesión ligamentosa',
+      'Espolón calcáneo',
       'Síndrome del túnel tarsiano',
     ],
     faq: [
       {
-        question: '¿Qué es la ecografía musculoesquelética?',
+        question: '¿Es dolorosa la ecografía?',
         answer:
-          'Es una técnica de imagen que utiliza ultrasonidos de alta frecuencia para visualizar en tiempo real los tejidos blandos del aparato locomotor: tendones, ligamentos, músculos, nervios y bursas. En podología y fisioterapia es especialmente útil para diagnosticar lesiones del pie y tobillo con una precisión que no ofrece ninguna otra prueba de imagen de bajo coste.',
+          'No. La ecografía es una exploración completamente indolora. Únicamente se aplica un gel frío sobre la piel y se desliza el transductor sobre la zona a explorar. No implica ningún tipo de agujas, radiación ni molestias significativas.',
       },
       {
-        question: '¿Duele la exploración ecográfica?',
+        question: '¿Necesito preparación previa para la ecografía?',
         answer:
-          'No. La ecografía es completamente indolora. El profesional aplica un gel conductor frío sobre la piel y desliza el transductor por la zona a explorar. En ocasiones puede realizar una leve presión sobre la zona dolorosa para correlacionar la imagen con los síntomas, pero el procedimiento no genera ningún dolor adicional.',
+          'En la mayoría de los casos no se requiere ninguna preparación especial. Simplemente es recomendable llevar ropa cómoda que permita acceder fácilmente a la zona a explorar (tobillo, pie, pantorrilla). Puede comer y beber con normalidad antes de la cita.',
       },
       {
-        question: '¿Cuánto tiempo dura la exploración?',
+        question: '¿En qué se diferencia la ecografía de la resonancia magnética?',
         answer:
-          'Una exploración ecográfica estándar en nuestro centro dura entre 20 y 40 minutos, incluyendo la anamnesis previa, la exploración propiamente dicha y la elaboración del informe diagnóstico. En casos complejos que requieran comparación bilateral o exploración de múltiples zonas, puede extenderse algo más.',
+          'La ecografía permite una exploración dinámica en tiempo real —es decir, observar los tendones y ligamentos mientras el paciente se mueve—, es más accesible económicamente y no requiere tiempo de espera. La resonancia magnética ofrece mayor campo de visión y es superior para valorar estructuras óseas profundas. Ambas técnicas son complementarias y en nuestra clínica orientamos al paciente hacia la más adecuada para cada caso.',
       },
       {
-        question: '¿Qué diferencia hay con la radiografía?',
+        question: '¿Puedo obtener el diagnóstico el mismo día?',
         answer:
-          'La radiografía muestra únicamente estructuras óseas y no visualiza tejidos blandos como tendones o ligamentos. La ecografía, en cambio, es ideal precisamente para esos tejidos. Además, la radiografía utiliza radiación ionizante y la ecografía es totalmente segura. Ambas pruebas son complementarias y en algunos casos las usamos conjuntamente para obtener el diagnóstico más completo.',
+          'Sí. Una de las principales ventajas de la ecografía es que el diagnóstico es inmediato. En la misma consulta el especialista valora la imagen, explica los hallazgos y propone el plan de tratamiento, sin necesidad de esperar días o semanas por un informe externo.',
       },
     ],
     keywords: [
-      'ecografía podológica Terrassa',
+      'ecografía Terrassa',
       'ecografía musculoesquelética Terrassa',
       'diagnóstico pie Terrassa',
+      'ecografía tobillo Terrassa',
       'ecografía tendón Aquiles',
-      'fascitis plantar diagnóstico',
-      'podólogo Terrassa',
+      'ecografía fascitis plantar',
+      'diagnóstico por imagen podología',
+      'ecografía sin radiación Terrassa',
     ],
     metaDescription:
-      'Ecografía clínica musculoesquelética en Terrassa. Diagnóstico preciso de lesiones de pie y tobillo en la misma visita, sin radiación y con informe inmediato. Podofisio Clinic.',
-    relatedServices: ['epi-epte-guiada', 'biomecanica-digital', 'radiofrecuencia-indiba'],
+      'Ecografía musculoesquelética de alta resolución en Terrassa. Diagnóstico inmediato del pie y tobillo sin radiación. Reserva tu cita en Podofisio Clinic.',
+    relatedServices: ['epte', 'indiba', 'estudio-biomecanico'],
   },
 
+  // ─────────────────────────────────────────────────────────────────
+  // 02 · EPTE
+  // ─────────────────────────────────────────────────────────────────
   {
-    slug: 'epi-epte-guiada',
+    slug: 'epte',
     number: '02',
-    category: 'Tratamiento Regenerativo',
-    title: 'EPI / EPTE Guiada',
-    subtitle: 'Electrólisis percutánea ecoguiada para eliminar el tejido degenerado sin cirugía.',
+    category: 'Fisioterapia Invasiva',
+    title: 'EPTE',
+    subtitle: 'Electrolisis percutánea terapéutica guiada por ecografía',
     description:
-      'La EPI (Electrólisis Percutánea Intratisular) y la EPTE son técnicas mínimamente invasivas que, guiadas por ecografía, aplican una microco­rriente galvánica directamente sobre el tejido tendinoso degenerado para estimular su regeneración.',
+      'La EPTE aplica una microcorriente galvánica de baja intensidad directamente sobre el tejido tendinoso degenerado, desencadenando una respuesta inflamatoria controlada que activa la regeneración natural del tejido sin necesidad de cirugía.',
     image:
       'https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop',
     stats: [
-      { value: '3–6 sesiones', label: 'Protocolo habitual' },
+      { value: '3-6 sesiones', label: 'Protocolo estándar' },
       { value: '>90% eficacia', label: 'En tendinopatías crónicas' },
-      { value: 'Ecoguiada', label: 'Precisión milimétrica' },
-      { value: 'Sin cirugía', label: 'Mínimamente invasiva' },
+      { value: 'Guiada por imagen', label: 'Precisión ecográfica' },
+      { value: 'Sin cirugía', label: 'Técnica mínimamente invasiva' },
     ],
     overview:
-      'La EPI (Electrólisis Percutánea Intratisular) es una técnica revolucionaria desarrollada en España que combina la precisión de la ecografía diagnóstica con la aplicación de una microcorriente galvánica directamente sobre el tejido tendinoso o fascial degenerado. A diferencia de los tratamientos convencionales que tratan el dolor pero no la causa, la EPI actúa sobre el tejido patológico generando una respuesta inflamatoria controlada que destruye el tejido degenerado y activa los procesos naturales de regeneración. En Podofisio Clinic Terrassa aplicamos tanto EPI como EPTE (Electrólisis Percutánea Terapéutica de Ecografía), siempre guiadas por imagen ecográfica en tiempo real para garantizar que la aguja alcanza exactamente el tejido a tratar. Esta combinación de diagnóstico y tratamiento en la misma sesión nos permite ofrecer resultados que ningún tratamiento conservador puede igualar en tendinopatías crónicas resistentes.',
+      'La Electrolisis Percutánea Terapéutica (EPTE) es una técnica de fisioterapia invasiva mínimamente invasiva que ha revolucionado el tratamiento de las tendinopatías crónicas y degenerativas. Consiste en la aplicación de una microcorriente galvánica de baja intensidad a través de una aguja de acupuntura de fino calibre, dirigida de forma precisa hacia el tejido tendinoso dañado bajo guía ecográfica en tiempo real. Esta corriente galvánica genera una electrólisis controlada en el tejido degenerado, destruyendo selectivamente las fibras de colágeno desordenadas y el neovascularización patológica característica de las tendinopatías crónicas, sin afectar al tejido sano circundante. El proceso desencadena una respuesta inflamatoria aguda y controlada que activa los mecanismos naturales de reparación tisular: migración de fibroblastos, síntesis de colágeno tipo I y neovascularización funcional. El resultado es la regeneración del tejido tendinoso con fibras de colágeno bien organizadas, recuperando la resistencia mecánica y eliminando el dolor crónico. La guía ecográfica es esencial en este procedimiento, pues garantiza que la aguja se coloque exactamente en la zona patológica, maximizando la eficacia y minimizando las molestias. En Podofisio Clinic Terrassa aplicamos la EPTE como parte de un protocolo integral que combina la técnica invasiva con ejercicio excéntrico, terapia manual y control biomecánico, obteniendo resultados superiores a los publicados en la literatura científica.',
     benefits: [
       {
-        title: 'Actúa sobre el tejido degenerado',
+        title: 'Resolución de patología crónica',
         description:
-          'La microcorriente galvánica destruye selectivamente el tejido tendinoso o fascial degenerado que el organismo es incapaz de reparar por sí solo, eliminando la causa raíz del dolor crónico.',
+          'La EPTE actúa sobre el tejido degenerado que no responde a tratamientos conservadores convencionales, ofreciendo una solución definitiva en tendinopatías de larga evolución resistentes a otros abordajes.',
       },
       {
-        title: 'Guiada por ecografía',
+        title: 'Guía ecográfica en tiempo real',
         description:
-          'La inserción de la aguja y la aplicación de la corriente se realizan bajo control ecográfico en tiempo real, garantizando que el tratamiento llega exactamente donde debe y minimizando cualquier riesgo.',
+          'La aguja se dirige con precisión absoluta hacia la zona patológica bajo control ecográfico continuo, garantizando que la electrólisis actúa exactamente donde es necesaria y evitando estructuras adyacentes.',
       },
       {
-        title: 'Mínimamente invasiva',
+        title: 'Mínimamente invasiva y ambulatoria',
         description:
-          'Solo se requiere una aguja fina de acupuntura, sin incisiones, sin puntos de sutura y con un tiempo de recuperación mínimo. El paciente puede retomar su actividad habitual en 24-48 horas.',
+          'El procedimiento se realiza en consulta sin anestesia general, con una aguja de fino calibre. El paciente puede retomar su actividad cotidiana en pocas horas tras cada sesión.',
       },
       {
-        title: 'Estimula la síntesis de colágeno',
+        title: 'Alternativa real a la cirugía',
         description:
-          'La respuesta biológica generada por la electrólisis activa fibroblastos y células madre tendinosas, produciendo colágeno tipo I de alta calidad que restaura la integridad estructural del tendón.',
+          'En la mayoría de los casos, la EPTE consigue los resultados que antes solo se obtenían con intervención quirúrgica, evitando los riesgos inherentes a la anestesia y la cirugía abierta.',
       },
       {
-        title: 'Alta eficacia en tendinopatías crónicas',
+        title: 'Protocolo corto y eficaz',
         description:
-          'Estudios clínicos avalan tasas de éxito superiores al 90% en tendinopatías de Aquiles, fascitis plantar crónica y epicondilitis que no han respondido a otros tratamientos conservadores.',
+          'Entre 3 y 6 sesiones son habitualmente suficientes para resolver una tendinopatía crónica, frente a los meses de tratamiento convencional sin garantía de resultado.',
       },
       {
-        title: 'Pocos tratamientos necesarios',
+        title: 'Compatible con ejercicio terapéutico',
         description:
-          'El protocolo habitual oscila entre 3 y 6 sesiones, espaciadas semanalmente. Esto contrasta con otras terapias que requieren meses de aplicación continuada para obtener resultados similares.',
+          'La EPTE se integra de forma óptima con programas de ejercicio excéntrico y carga progresiva, potenciando la remodelación del tejido y previniendo las recaídas a largo plazo.',
       },
     ],
     process: [
       {
         step: '01',
-        title: 'Diagnóstico ecográfico',
+        title: 'Evaluación y diagnóstico ecográfico',
         description:
-          'Realizamos una ecografía de alta resolución para cuantificar el grado de degeneración del tejido y planificar la intervención con máxima precisión.',
+          'Antes de iniciar el tratamiento se realiza una exploración ecográfica de la zona afectada para confirmar el diagnóstico, cuantificar el grado de degeneración y localizar con exactitud el área a tratar.',
       },
       {
         step: '02',
-        title: 'Localización del tejido patológico',
+        title: 'Diseño del protocolo personalizado',
         description:
-          'Identificamos en tiempo real la zona exacta de degeneración tendinosa, midiendo su extensión y definiendo los puntos de entrada óptimos para la aguja.',
+          'Se establece el número de sesiones, la intensidad de corriente y la pauta de ejercicio terapéutico complementario adaptados a las características de la lesión y la actividad del paciente.',
       },
       {
         step: '03',
-        title: 'Inserción guiada por ecografía',
+        title: 'Aplicación de la técnica EPTE',
         description:
-          'Introducimos la aguja bajo visión ecográfica directa hasta colocarla con precisión milimétrica en el interior del tejido degenerado.',
+          'Bajo guía ecográfica en tiempo real, se introduce la aguja en la zona de tejido degenerado y se aplica la microcorriente galvánica durante el tiempo protocolizado. La sensación durante el procedimiento es mínima gracias al fino calibre de la aguja.',
       },
       {
         step: '04',
-        title: 'Aplicación de la EPI / EPTE',
+        title: 'Tratamiento inmediato post-sesión',
         description:
-          'Aplicamos la microcorriente galvánica en el protocolo y la intensidad adecuados para cada tejido y grado de degeneración, generando la respuesta inflamatoria terapéutica.',
+          'Tras la aplicación, se realizan maniobras de terapia manual y se instruye al paciente en el programa de ejercicio excéntrico y pautas de carga para optimizar la respuesta regenerativa del tejido.',
       },
       {
         step: '05',
-        title: 'Protocolo de carga progresiva',
+        title: 'Seguimiento y alta',
         description:
-          'Diseñamos un programa de ejercicio excéntrico y progresión de carga adaptado al tendón tratado para consolidar los beneficios de la regeneración tisular.',
+          'Entre sesiones se monitoriza la evolución clínica y ecográfica. Al finalizar el protocolo se realiza una ecografía de control para objetivar la remodelación tisular y se pautan medidas preventivas de recaída.',
       },
     ],
     conditions: [
       'Tendinopatía de Aquiles',
-      'Fascitis Plantar crónica',
+      'Fascitis plantar crónica',
       'Epicondilitis',
-      'Tendinopatía Rotuliana',
-      'Síndrome del Manguito Rotador',
-      'Tendinopatía del Tibial Posterior',
+      'Tendinopatía rotuliana',
+      'Manguito rotador',
+      'Tibial posterior',
       'Bursitis crónica',
     ],
     faq: [
       {
-        question: '¿Qué es exactamente la EPI?',
+        question: '¿Es dolorosa la sesión de EPTE?',
         answer:
-          'La EPI (Electrólisis Percutánea Intratisular) es una técnica de fisioterapia invasiva desarrollada por el Dr. José Manuel Sánchez Ibáñez que consiste en introducir una aguja de acupuntura en el tejido degenerado y aplicar una microcorriente galvánica a través de ella. Esta corriente genera una respuesta química local que destruye el tejido patológico y desencadena los mecanismos naturales de reparación tisular. La EPTE es una variante de esta técnica con un dispositivo específicamente diseñado para ello.',
+          'La molestia durante la aplicación es moderada y muy tolerable para la gran mayoría de pacientes. La aguja utilizada es de muy fino calibre (similar a la de acupuntura) y la duración de la aplicación es breve. Algunas personas refieren un ligero aumento del dolor en las 24-48 horas posteriores a la sesión, que corresponde a la respuesta inflamatoria terapéutica y remite espontáneamente.',
       },
       {
-        question: '¿Duele el tratamiento?',
+        question: '¿Cuántas sesiones de EPTE necesitaré?',
         answer:
-          'La sensación durante la aplicación varía según el paciente y la zona tratada. La inserción de la aguja provoca una molestia mínima similar a una punción de acupuntura. Durante la aplicación de la corriente pueden sentirse contracciones musculares involuntarias y una sensación de presión interna que desaparece al finalizar. Tras el tratamiento, es normal una molestia similar a una agujeta que dura 24-48 horas: es la señal de que el proceso de regeneración se ha activado.',
+          'El protocolo habitual oscila entre 3 y 6 sesiones, con una frecuencia de una sesión por semana. El número exacto depende del grado de degeneración tisular, el tiempo de evolución de la lesión y la respuesta individual de cada paciente. En la primera visita el especialista puede orientar sobre el número de sesiones previsto para tu caso.',
       },
       {
-        question: '¿Cuántas sesiones son necesarias?',
+        question: '¿Puedo hacer deporte mientras recibo el tratamiento con EPTE?',
         answer:
-          'El protocolo estándar es de 3 a 6 sesiones, realizadas una vez por semana. La mayoría de los pacientes perciben una mejora significativa tras la segunda o tercera sesión. En tendinopatías muy crónicas o con alta degeneración puede ser necesario extender el tratamiento a 8 sesiones. El número definitivo se determina tras la valoración ecográfica inicial y se revisa con cada sesión.',
+          'Sí, en la mayoría de los casos es posible mantener cierto nivel de actividad física adaptada durante el tratamiento. De hecho, el ejercicio terapéutico —especialmente el excéntrico— forma parte fundamental del protocolo y es necesario para lograr la correcta remodelación del colágeno. El especialista indicará qué actividades son adecuadas en cada fase del tratamiento.',
       },
       {
-        question: '¿Qué diferencia hay con los corticoides?',
+        question: '¿La EPTE es definitiva o la lesión puede volver?',
         answer:
-          'Los corticoides son potentes antiinflamatorios que reducen el dolor rápidamente, pero no reparan el tejido dañado y a largo plazo pueden debilitar la estructura del tendón aumentando el riesgo de rotura. La EPI/EPTE, en cambio, actúa directamente sobre la causa del problema: destruye el tejido degenerado y estimula su regeneración. Sus efectos son duraderos y mejoran la estructura del tejido en lugar de enmascarar el dolor.',
+          'La EPTE regenera el tejido degenerado de forma efectiva y duradera. Sin embargo, si el factor causante de la tendinopatía —sobrecarga mecánica, alteración biomecánica, calzado inadecuado— no se corrige, la lesión puede reaparecer. Por eso integramos siempre la EPTE con un estudio biomecánico y un programa de ejercicio preventivo para garantizar los resultados a largo plazo.',
       },
     ],
     keywords: [
-      'EPI Terrassa',
       'EPTE Terrassa',
-      'electrólisis percutánea Terrassa',
-      'tendinopatía Aquiles Terrassa',
-      'fascitis plantar tratamiento Terrassa',
+      'electrolisis percutánea Terrassa',
+      'tendinopatía tratamiento Terrassa',
       'fisioterapia invasiva Terrassa',
+      'EPTE tendón Aquiles',
+      'EPTE fascitis plantar',
+      'electrolisis percutánea terapéutica',
+      'tendinopatía crónica tratamiento',
     ],
     metaDescription:
-      'EPI y EPTE guiada por ecografía en Terrassa. Electrólisis percutánea para tendinopatías crónicas con más del 90% de eficacia. Sin cirugía. Podofisio Clinic.',
-    relatedServices: ['ecografia-clinica', 'radiofrecuencia-indiba', 'biomecanica-digital'],
+      'EPTE — Electrolisis Percutánea Terapéutica en Terrassa. Tratamiento de tendinopatías crónicas sin cirugía, guiado por ecografía. Podofisio Clinic.',
+    relatedServices: ['ecografia', 'indiba', 'estudio-biomecanico'],
   },
 
+  // ─────────────────────────────────────────────────────────────────
+  // 03 · RECUPERACIÓN FUNCIONAL
+  // ─────────────────────────────────────────────────────────────────
   {
-    slug: 'radiofrecuencia-indiba',
+    slug: 'recuperacion-funcional',
     number: '03',
-    category: 'Fisioterapia Avanzada',
-    title: 'Radiofrecuencia Indiba',
-    subtitle: 'Calor terapéutico profundo a 448 kHz para acelerar la recuperación y eliminar el dolor.',
+    category: 'Fisioterapia',
+    title: 'Recuperación Funcional',
+    subtitle: 'Rehabilitación integral del movimiento y la función',
     description:
-      'La radiofrecuencia capacitiva-resistiva Indiba activa el metabolismo celular en tejidos profundos mediante calor endógeno, acelerando la recuperación de lesiones músculo-esqueléticas y reduciendo el dolor de forma duradera.',
+      'Programa de recuperación funcional que combina terapia manual, ejercicio terapéutico y reeducación propioceptiva para restaurar el movimiento, eliminar el dolor y prevenir recaídas de forma duradera.',
+    image:
+      'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=2070&auto=format&fit=crop',
+    stats: [
+      { value: 'Ejercicio terapéutico', label: 'Base del tratamiento' },
+      { value: 'Terapia manual', label: 'Técnicas especializadas' },
+      { value: 'Personalizada', label: 'Plan individual' },
+      { value: 'Resultados duraderos', label: 'Prevención de recaídas' },
+    ],
+    overview:
+      'La recuperación funcional es el pilar central de la fisioterapia moderna. Lejos de los tratamientos pasivos del pasado, nuestro modelo terapéutico sitúa al paciente en el centro del proceso de recuperación, utilizando el movimiento activo y el ejercicio terapéutico como principal herramienta de curación. En Podofisio Clinic Terrassa aplicamos protocolos basados en la evidencia científica más actualizada, combinando las mejores técnicas de terapia manual —movilización articular, liberación miofascial, punción seca, manipulación— con programas de ejercicio específico diseñados para restaurar la función, la fuerza, la coordinación y la propiocepción de la zona lesionada. Cada programa de recuperación funcional es único y se adapta al diagnóstico, la condición física del paciente, sus objetivos —deportivos o de calidad de vida— y el tiempo disponible para la recuperación. Trabajamos con deportistas de alta competición que necesitan volver al máximo rendimiento en el menor tiempo posible, con pacientes post-quirúrgicos que deben recuperar la funcionalidad perdida, y con personas que sufren dolor crónico que limita su vida diaria. En todos los casos, el objetivo es idéntico: recuperar la función completa, eliminar el dolor y dotar al paciente de las herramientas necesarias para prevenir futuras lesiones.',
+    benefits: [
+      {
+        title: 'Tratamiento personalizado y basado en evidencia',
+        description:
+          'Cada protocolo se diseña de forma individual tras una evaluación funcional exhaustiva, aplicando las técnicas con mayor evidencia científica disponible para cada tipo de lesión y perfil de paciente.',
+      },
+      {
+        title: 'Terapia manual especializada',
+        description:
+          'Combinamos movilización articular, técnicas de tejido blando, liberación miofascial y neurodinàmica para normalizar la función articular y muscular, aliviar el dolor y preparar el tejido para el ejercicio activo.',
+      },
+      {
+        title: 'Ejercicio terapéutico progresivo',
+        description:
+          'El ejercicio activo y progresivo es la herramienta más potente de recuperación. Diseñamos programas de fortalecimiento, movilidad y coordinación que el paciente puede realizar tanto en clínica como en casa.',
+      },
+      {
+        title: 'Reeducación propioceptiva y neuromuscular',
+        description:
+          'Entrenamos el sistema nervioso para recuperar el control motor, el equilibrio y la respuesta refleja de la musculatura, factores clave para prevenir recaídas especialmente tras esguinces y cirugías.',
+      },
+      {
+        title: 'Recuperación deportiva acelerada',
+        description:
+          'Para deportistas, diseñamos protocolos de retorno al deporte con criterios objetivos que garantizan una reincorporación segura y libre de riesgo de relesión, minimizando el tiempo fuera de competición.',
+      },
+      {
+        title: 'Educación terapéutica al paciente',
+        description:
+          'Empoderamos al paciente con conocimiento sobre su lesión, sus factores de riesgo y las estrategias de autocuidado, convirtiéndolo en protagonista activo de su propia recuperación.',
+      },
+    ],
+    process: [
+      {
+        step: '01',
+        title: 'Valoración funcional inicial',
+        description:
+          'Evaluación exhaustiva del movimiento, la fuerza, la postura y la función de la zona afectada mediante tests clínicos validados. Se identifican los déficits funcionales específicos que hay que recuperar.',
+      },
+      {
+        step: '02',
+        title: 'Diagnóstico y objetivos terapéuticos',
+        description:
+          'Se establece el diagnóstico fisioterapéutico, se fijan los objetivos de recuperación en plazos realistas y se explica al paciente el plan de tratamiento en detalle.',
+      },
+      {
+        step: '03',
+        title: 'Terapia manual y técnicas pasivas',
+        description:
+          'En las fases iniciales se aplican técnicas de terapia manual para reducir el dolor, restaurar la movilidad articular y preparar los tejidos para el trabajo activo posterior.',
+      },
+      {
+        step: '04',
+        title: 'Ejercicio terapéutico activo y progresivo',
+        description:
+          'El paciente trabaja activamente con ejercicios de fortalecimiento, movilidad, coordinación y propiocepción de complejidad creciente, supervisados y ajustados por el fisioterapeuta en cada sesión.',
+      },
+      {
+        step: '05',
+        title: 'Retorno a la actividad y prevención',
+        description:
+          'Se guía al paciente en la reincorporación progresiva a su actividad habitual o deportiva, y se diseña un programa de ejercicios de mantenimiento para consolidar la recuperación y prevenir recaídas.',
+      },
+    ],
+    conditions: [
+      'Esguince de tobillo',
+      'Rotura muscular',
+      'Post-cirugía',
+      'Dolor lumbar',
+      'Cervicalgia',
+      'Contractura muscular',
+      'Lesión deportiva',
+      'Rehabilitación post-fractura',
+    ],
+    faq: [
+      {
+        question: '¿Cuántas sesiones necesitaré para recuperarme?',
+        answer:
+          'El número de sesiones varía considerablemente según el tipo y gravedad de la lesión, el tiempo de evolución, la condición física del paciente y sus objetivos. Un esguince leve puede resolverse en 4-6 sesiones, mientras que una recuperación post-quirúrgica puede requerir varios meses. En la primera visita el fisioterapeuta realizará una estimación personalizada tras la valoración inicial.',
+      },
+      {
+        question: '¿La fisioterapia es compatible con otros tratamientos médicos?',
+        answer:
+          'Sí, la fisioterapia es completamente compatible y complementaria con los tratamientos médicos convencionales. De hecho, la recuperación funcional es el complemento indispensable de muchas intervenciones quirúrgicas y tratamientos farmacológicos. Trabajamos en coordinación con el equipo médico del paciente cuando es necesario.',
+      },
+      {
+        question: '¿Tengo que hacer ejercicios en casa entre sesiones?',
+        answer:
+          'El trabajo entre sesiones es fundamental para acelerar la recuperación. El fisioterapeuta te indicará ejercicios específicos adaptados a tu nivel y situación que podrás realizar en casa de forma segura. La constancia con estos ejercicios marca una diferencia enorme en los resultados y en el tiempo total de recuperación.',
+      },
+      {
+        question: '¿Es normal sentir algo de dolor durante las sesiones de fisioterapia?',
+        answer:
+          'Algunas técnicas de terapia manual pueden generar una molestia tolerable durante su aplicación, que cede inmediatamente al terminar. Sin embargo, el dolor intenso nunca debe ser la norma y siempre comunicamos al paciente qué sensaciones son esperables. El trabajo activo con ejercicio tampoco debería ser doloroso: trabajamos dentro de los límites del dolor para no agravar la lesión.',
+      },
+    ],
+    keywords: [
+      'fisioterapia Terrassa',
+      'recuperación funcional Terrassa',
+      'rehabilitación Terrassa',
+      'fisioterapeuta Terrassa',
+      'rehabilitación deportiva Terrassa',
+      'terapia manual Terrassa',
+      'ejercicio terapéutico Terrassa',
+      'recuperación lesión Terrassa',
+    ],
+    metaDescription:
+      'Recuperación funcional y fisioterapia en Terrassa. Rehabilitación personalizada con terapia manual y ejercicio terapéutico. Podofisio Clinic.',
+    relatedServices: ['epte', 'indiba', 'ecografia'],
+  },
+
+  // ─────────────────────────────────────────────────────────────────
+  // 04 · INDIBA
+  // ─────────────────────────────────────────────────────────────────
+  {
+    slug: 'indiba',
+    number: '04',
+    category: 'Tecnología Médica',
+    title: 'Indiba',
+    subtitle: 'Radiofrecuencia terapéutica de 448 kHz',
+    description:
+      'Indiba utiliza la radiofrecuencia de 448 kHz para generar calor terapéutico en tejidos profundos, activando la regeneración celular, acelerando la recuperación y aliviando el dolor crónico de forma completamente indolora.',
     image:
       'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop',
     stats: [
-      { value: '448 kHz', label: 'Frecuencia terapéutica' },
-      { value: 'Profundo', label: 'Acción en tejido profundo' },
+      { value: '448 kHz', label: 'Frecuencia óptima' },
+      { value: 'Tejido profundo', label: 'Acción en profundidad' },
       { value: 'Sin dolor', label: 'Sesión confortable' },
-      { value: 'Acelerada', label: 'Recuperación más rápida' },
+      { value: 'Recuperación acelerada', label: 'Resultados rápidos' },
     ],
     overview:
-      'Indiba es la tecnología de radiofrecuencia capacitiva-resistiva (TECAR) más avanzada del mercado, operando a la frecuencia exclusiva de 448 kHz, que ha demostrado ser la óptima para la regeneración celular y tisular. A diferencia de otras terapias físicas que actúan superficialmente, Indiba penetra hasta los tejidos más profundos —articulaciones, tendones, fascias y musculatura profunda— generando un calor endógeno que activa el metabolismo celular, aumenta la circulación local y estimula los procesos naturales de reparación. En Podofisio Clinic Terrassa utilizamos Indiba tanto en modo CAP (capacitivo, para tejidos más superficiales como músculos y fascias) como en modo RES (resistivo, para estructuras profundas como articulaciones y tendones). Esta versatilidad nos permite tratar eficazmente desde contracturas musculares agudas hasta artrosis crónica, siempre con sesiones confortables e indoloras que los pacientes describen como un agradable masaje en calor.',
+      'Indiba es un sistema de radiofrecuencia terapéutica que opera a la frecuencia característica de 448 kHz, elegida por su capacidad única de interaccionar con la membrana celular y optimizar el metabolismo tisular sin generar efectos negativos sobre el organismo. A diferencia de otras fuentes de calor superficial, la radiofrecuencia de Indiba penetra en tejidos profundos —músculo, tendón, ligamento, cápsula articular— generando un calor interno controlado que activa mecanismos fisiológicos de reparación: estimulación de fibroblastos y condrocitos, aumento del flujo sanguíneo local, incremento del metabolismo celular, reducción del espasmo muscular y modulación de la respuesta inflamatoria. El equipo dispone de dos modos de aplicación: el modo capacitivo, que actúa preferentemente sobre tejidos blandos superficiales como la fascia y la musculatura, y el modo resistivo, que penetra más en profundidad y es de elección para estructuras como ligamentos, tendones y cápsula articular. Esta versatilidad permite tratar de forma eficaz un amplísimo espectro de patologías musculoesqueléticas. En Podofisio Clinic Terrassa utilizamos Indiba como parte de protocolos integrales de recuperación, combinándola con terapia manual y ejercicio terapéutico para potenciar los resultados y acortar los plazos de recuperación.',
     benefits: [
       {
-        title: 'Calor profundo en tejidos diana',
+        title: 'Acción en tejidos profundos',
         description:
-          'La frecuencia de 448 kHz permite alcanzar estructuras profundas que ninguna otra terapia física convencional puede tratar, generando un calor endógeno uniforme en toda la masa tisular.',
+          'La radiofrecuencia de 448 kHz penetra hasta 5-6 cm de profundidad, llegando a tendones, ligamentos y estructuras articulares que no son accesibles para otras terapias físicas convencionales.',
       },
       {
-        title: 'Activa fibroblastos y regeneración',
+        title: 'Activación de la regeneración celular',
         description:
-          'El calor endógeno activa fibroblastos y aumenta la síntesis de colágeno, acelerando la reparación de tendones, ligamentos y fascias dañadas a un ritmo muy superior al natural.',
+          'El calor endógeno generado estimula la producción de colágeno por los fibroblastos, accelera el metabolismo celular y potencia los mecanismos naturales de reparación tisular a nivel microscópico.',
       },
       {
-        title: 'Potente efecto antiinflamatorio',
+        title: 'Reducción rápida del dolor y la inflamación',
         description:
-          'Indiba reduce la concentración de mediadores inflamatorios locales y modula la respuesta inmunitaria en la zona tratada, aliviando el dolor y la inflamación crónica desde las primeras sesiones.',
+          'Mejora la circulación local, reduce el edema y modula la respuesta inflamatoria, proporcionando alivio del dolor significativo desde las primeras sesiones en patologías agudas y crónicas.',
       },
       {
-        title: 'Reduce el edema y el hematoma',
+        title: 'Aplicación completamente indolora',
         description:
-          'El efecto vasodilatador y el estímulo del drenaje linfático que provoca Indiba aceleran la reabsorción de edemas y hematomas posttraumáticos, reduciendo el tiempo de recuperación.',
+          'La sensación durante la sesión es de un calor profundo muy confortable y relajante. No genera ningún tipo de molestia y el paciente puede retomar su actividad inmediatamente tras la sesión.',
       },
       {
-        title: 'Relajación muscular profunda',
+        title: 'Versatilidad terapéutica',
         description:
-          'El calor profundo provoca una relajación de la musculatura intrínseca y extrínseca del pie que ningún masaje superficial puede igualar, siendo especialmente útil en contracturas crónicas.',
+          'Los dos modos de aplicación —capacitivo y resistivo— permiten adaptar el tratamiento a la profundidad y el tipo de tejido diana, haciendo de Indiba una herramienta válida para un amplio rango de patologías.',
       },
       {
-        title: 'Seguro para todas las edades',
+        title: 'Sinergia con otras técnicas',
         description:
-          'Al no utilizar radiación ionizante ni corrientes de alta intensidad, Indiba es completamente segura para pacientes de cualquier edad, incluyendo deportistas de élite, personas mayores y pacientes con patología crónica.',
+          'Indiba potencia los efectos de la terapia manual realizada durante la misma sesión, pues el calor profundo relaja la musculatura y mejora la viscoelasticidad de los tejidos, facilitando las movilizaciones y estiramientos.',
       },
     ],
     process: [
       {
         step: '01',
-        title: 'Evaluación inicial',
+        title: 'Valoración y selección del protocolo',
         description:
-          'Valoramos la patología, el grado de inflamación o degeneración y el objetivo terapéutico para definir el modo de aplicación, la intensidad y el número de sesiones más adecuados.',
+          'El fisioterapeuta evalúa la zona afectada y selecciona el protocolo de Indiba más adecuado: modo capacitivo o resistivo, parámetros de intensidad y duración en función del diagnóstico y la fase de la lesión.',
       },
       {
         step: '02',
-        title: 'Aplicación CAP (capacitivo)',
+        title: 'Preparación de la zona de tratamiento',
         description:
-          'Iniciamos con el modo capacitivo, especialmente eficaz sobre tejidos blandos superficiales como músculos, fascias y tejido cicatricial, generando calor suave y uniforme.',
+          'Se aplica un gel conductor especial sobre la piel que permite el deslizamiento fluido del electrodo y optimiza la transmisión de la radiofrecuencia hacia los tejidos profundos.',
       },
       {
         step: '03',
-        title: 'Aplicación RES (resistivo)',
+        title: 'Aplicación de la radiofrecuencia',
         description:
-          'Complementamos con el modo resistivo para penetrar hasta estructuras profundas como articulaciones y tendones, donde el calor endógeno es más intenso y la acción regenerativa mayor.',
+          'El terapeuta desliza el electrodo activo sobre la zona a tratar en movimientos suaves y controlados. El paciente percibe una sensación de calor progresivo y profundo que resulta muy confortable.',
       },
       {
         step: '04',
-        title: 'Combinación con ejercicio',
+        title: 'Terapia manual combinada',
         description:
-          'En muchos protocolos, aprovechamos el estado de activación tisular que genera Indiba para realizar ejercicio terapéutico simultáneo, multiplicando el efecto regenerativo.',
+          'Aprovechando el calor tisular generado por Indiba, se realizan técnicas de terapia manual —movilizaciones, estiramientos, liberación miofascial— cuyos efectos se potencian enormemente sobre el tejido calentado.',
       },
       {
         step: '05',
-        title: 'Seguimiento y ajuste',
+        title: 'Indicaciones post-sesión',
         description:
-          'Evaluamos la respuesta al tratamiento en cada sesión y ajustamos los parámetros para optimizar los resultados, adaptando el protocolo a la evolución de cada paciente.',
+          'Al finalizar se registra la evolución del paciente y se ajusta el protocolo para la siguiente sesión. Se indica al paciente hidratación adecuada y las actividades recomendadas o a evitar en las horas posteriores.',
       },
     ],
     conditions: [
-      'Fascitis Plantar',
+      'Fascitis plantar',
       'Tendinopatía de Aquiles',
-      'Esguince de Tobillo',
-      'Contracturas musculares',
+      'Esguince',
+      'Contractura',
       'Artrosis',
       'Dolor lumbar',
       'Fibromialgia',
-      'Roturas fibrilares',
+      'Rotura fibrilar',
     ],
     faq: [
       {
-        question: '¿Qué es exactamente Indiba?',
+        question: '¿Cuántas sesiones de Indiba necesito?',
         answer:
-          'Indiba es una marca española que desarrolla tecnología de radiofrecuencia capacitiva-resistiva a la frecuencia de 448 kHz. Esta frecuencia específica ha sido patentada y validada científicamente como la más eficaz para la regeneración celular. El dispositivo genera un campo electromagnético que produce calor endógeno —es decir, el propio tejido genera el calor desde dentro— a diferencia de los ultrasonidos o el láser, que actúan desde el exterior.',
+          'El número de sesiones depende del tipo de lesión y su evolución. Para patologías agudas pueden ser suficientes 4-6 sesiones, mientras que procesos crónicos pueden requerir entre 8 y 12. En muchos casos Indiba se combina con otras técnicas como parte de un protocolo integral, y el fisioterapeuta diseña el número óptimo de sesiones tras la valoración inicial.',
       },
       {
-        question: '¿Cuántas sesiones necesito?',
+        question: '¿Indiba tiene alguna contraindicación?',
         answer:
-          'El número de sesiones depende de la patología y su cronicidad. Las lesiones agudas pueden resolverse en 3-5 sesiones, mientras que las patologías crónicas o degenerativas suelen requerir entre 8 y 12 sesiones. En deportistas en activo, a menudo utilizamos Indiba como complemento de otros tratamientos para acelerar la recuperación entre competiciones. Tras la valoración inicial te indicaremos el protocolo más apropiado para tu caso.',
+          'Indiba está contraindicada en embarazo, portadores de marcapasos o implantes electrónicos activos, zonas con prótesis metálicas (relativo), y sobre tejidos con neoplasias activas. El fisioterapeuta revisará tu historial clínico antes de iniciar el tratamiento para verificar la ausencia de contraindicaciones.',
       },
       {
-        question: '¿Es compatible con otros tratamientos?',
+        question: '¿Indiba duele?',
         answer:
-          'Sí, de hecho Indiba obtiene sus mejores resultados cuando se combina con otras terapias. En nuestro centro la combinamos habitualmente con EPI/EPTE, ejercicio terapéutico, vendaje neuromuscular y, en casos seleccionados, con ecografía guiada. La sinergia entre Indiba y el ejercicio es especialmente potente, ya que el estado de activación celular que genera la radiofrecuencia potencia los efectos del entrenamiento sobre el tejido.',
+          'No. La sesión de Indiba es completamente indolora e incluso muy agradable. La sensación predominante es la de un calor profundo y relajante. Si en algún momento la intensidad resultase molesta, se ajusta inmediatamente el parámetro.',
       },
       {
-        question: '¿Quién puede recibir Indiba?',
+        question: '¿Puedo combinar Indiba con otros tratamientos?',
         answer:
-          'Indiba está contraindicada en embarazadas, pacientes con marcapasos o implantes metálicos activos en la zona de tratamiento, y en procesos oncológicos activos. Fuera de estas contraindicaciones, es una terapia segura para la inmensa mayoría de los pacientes, incluyendo niños, personas mayores, deportistas y pacientes con patología sistémica. En caso de duda, nuestro equipo valorará individualmente si es la terapia más adecuada para ti.',
+          'Sí, y de hecho es muy recomendable. Indiba es especialmente sinérgica con la terapia manual, el ejercicio terapéutico, la EPTE y los ultrasonidos. En nuestra clínica la integramos habitualmente en sesiones que combinan varias técnicas para maximizar los resultados y acortar los tiempos de recuperación.',
       },
     ],
     keywords: [
-      'radiofrecuencia Terrassa',
       'Indiba Terrassa',
-      'TECAR Terrassa',
-      'fisioterapia Terrassa',
-      'dolor pie Terrassa',
-      'tendinopatía tratamiento Terrassa',
+      'radiofrecuencia Terrassa',
+      'fisioterapia Indiba Terrassa',
+      'radiofrecuencia terapéutica Terrassa',
+      'Indiba fisioterapia',
+      '448 kHz terapia',
+      'calor profundo fisioterapia Terrassa',
+      'recuperación muscular Terrassa',
     ],
     metaDescription:
-      'Radiofrecuencia Indiba en Terrassa. Terapia TECAR a 448 kHz para lesiones musculoesqueléticas, tendinopatías y dolor crónico. Recuperación acelerada. Podofisio Clinic.',
-    relatedServices: ['epi-epte-guiada', 'ecografia-clinica', 'plantillas-3d-elite'],
+      'Indiba — Radiofrecuencia terapéutica de 448 kHz en Terrassa. Recuperación acelerada, alivio del dolor profundo y regeneración tisular. Podofisio Clinic.',
+    relatedServices: ['epte', 'ecografia', 'recuperacion-funcional'],
   },
 
+  // ─────────────────────────────────────────────────────────────────
+  // 05 · QUIROPODÍA
+  // ─────────────────────────────────────────────────────────────────
   {
-    slug: 'biomecanica-digital',
-    number: '04',
-    category: 'Análisis Biomecánico',
-    title: 'Biomecánica Digital',
-    subtitle: 'Análisis computerizado de la marcha y la pisada para encontrar la causa de tu dolor.',
+    slug: 'quiropodia',
+    number: '05',
+    category: 'Podología',
+    title: 'Quiropodía',
+    subtitle: 'Cuidado profesional y tratamiento del pie',
     description:
-      'Nuestro estudio biomecánico digital combina baropodometría dinámica, análisis 3D de la marcha y exploración podológica completa para identificar las alteraciones que generan dolor y lesiones recurrentes.',
+      'La quiropodía comprende el tratamiento profesional de callos, durezas, uñas engrosadas, helomas y otras patologías dérmicas del pie, garantizando la salud cutánea y ungueal con técnicas indoloras y equipos de máxima higiene.',
     image:
-      'https://images.unsplash.com/photo-1531844251246-9a1bfaae09fc?q=80&w=2070&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=2070&auto=format&fit=crop',
     stats: [
-      { value: 'Análisis 3D', label: 'Marcha y pisada' },
-      { value: 'Baropodometría', label: 'Plataforma de presiones' },
-      { value: 'Informe', label: 'Detallado y personalizado' },
-      { value: 'Plantillas', label: 'Incluidas en el estudio' },
+      { value: 'Revisión completa', label: 'Del pie y el tobillo' },
+      { value: 'Sin dolor', label: 'Técnica indolora' },
+      { value: 'Prevención', label: 'Cuidado preventivo' },
+      { value: 'Todas las edades', label: 'Pacientes de 0 a 100 años' },
     ],
     overview:
-      'El estudio biomecánico digital es la base de cualquier tratamiento podológico eficaz. Sin conocer cómo pisa una persona, cómo se distribuyen las presiones en su pie y cómo se desarrolla su marcha, cualquier tratamiento es una apuesta a ciegas. En Podofisio Clinic Terrassa disponemos de la tecnología más avanzada en análisis biomecánico: plataformas de presiones baropodométricas de alta resolución, análisis computerizado de la marcha en 3D y sistemas de escáner del pie que permiten diseñar plantillas de precisión milimétrica. El resultado es un informe completo y comprensible que identifica con datos objetivos cuáles son las alteraciones biomecánicas responsables del dolor o las lesiones del paciente, y qué correcciones son necesarias. Este estudio es la base imprescindible para la prescripción de plantillas personalizadas, pero también aporta información crucial para el diseño de programas de ejercicio y para orientar otros tratamientos como la EPI o la ecografía.',
+      'La quiropodía es la rama de la podología dedicada al diagnóstico, tratamiento y prevención de las patologías dérmicas y ungueales del pie. En Podofisio Clinic Terrassa realizamos sesiones de quiropodía con el más alto nivel de exigencia técnica e higiénica, utilizando instrumental estéril de un solo uso o esterilizado en autoclave, fresas de podología de última generación y productos dermatológicamente testados. El tratamiento quiropológico abarca desde la eliminación de callosidades y durezas hasta el cuidado de uñas engrosadas o atróficas, el tratamiento de helomas interdigitales, la atención al pie diabético y la eliminación de verrugas plantares. Prestamos especial atención al pie diabético, donde el cuidado podológico regular es fundamental para prevenir úlceras y complicaciones vasculares que pueden derivar en situaciones graves. Durante la visita de quiropodía aprovechamos para realizar una revisión general del estado del pie, detectar alteraciones que requieran valoración más específica —biomecánica, vascular, dermatológica— y dar al paciente consejos personalizados sobre higiene, hidratación y calzado adecuado. La frecuencia recomendada varía de un paciente a otro —generalmente entre 6 semanas y 4 meses— según el tipo de piel, la actividad física y la patología de base.',
     benefits: [
       {
-        title: 'Análisis computerizado de presiones',
+        title: 'Alivio inmediato del dolor',
         description:
-          'La plataforma baropodométrica registra con precisión milisegundo a milisegundo cómo se distribuyen las presiones en toda la superficie plantar durante la marcha, detectando sobrecargas y desequilibrios invisibles a simple vista.',
+          'La eliminación de callosidades y helomas proporciona un alivio del dolor casi inmediato, permitiendo al paciente caminar con mayor comodidad desde el primer momento tras la sesión.',
       },
       {
-        title: 'Detecta desequilibrios ocultos',
+        title: 'Prevención de complicaciones',
         description:
-          'Muchas lesiones recurrentes tienen su origen en alteraciones biomecánicas sutiles que ninguna exploración manual puede detectar. El análisis digital objetiva y cuantifica esos desequilibrios con datos precisos.',
+          'El cuidado podológico regular previene la aparición de úlceras, infecciones y lesiones por fricción, especialmente relevante en pacientes con diabetes, insuficiencia vascular o neuropatía periférica.',
       },
       {
-        title: 'Análisis específico para el deporte',
+        title: 'Tratamiento de uñas problemáticas',
         description:
-          'Para deportistas, realizamos el análisis con el calzado deportivo habitual y a la velocidad específica de su disciplina, identificando las alteraciones que aparecen solo bajo carga o a alta velocidad.',
+          'Tratamos uñas engrosadas (onicogrifosis), uñas micóticas (onicomicosis), uñas involutadas y otras alteraciones ungueales con técnicas seguras, eficaces e indoloras.',
       },
       {
-        title: 'Prevención de lesiones',
+        title: 'Higiene y seguridad certificadas',
         description:
-          'El estudio biomecánico no solo diagnostica patologías existentes: permite detectar factores de riesgo antes de que generen una lesión, siendo especialmente valioso en deportistas o personas con alta demanda física.',
+          'Todo el instrumental que entra en contacto con el paciente es de un solo uso o esterilizado en autoclave. Cumplimos estrictamente con los protocolos de bioseguridad vigentes para garantizar la máxima seguridad.',
       },
       {
-        title: 'Plantillas basadas en datos reales',
+        title: 'Atención integral al pie diabético',
         description:
-          'A diferencia de las plantillas de farmacia o las genéricas, las que prescribimos tras el estudio están diseñadas a partir de los datos objetivos de tu pisada, corrigiendo exactamente las desviaciones detectadas.',
+          'El paciente diabético recibe una atención podológica especializada que incluye exploración vascular y sensitiva, cuidado preventivo de la piel y las uñas, y asesoramiento sobre calzado y autocuidado.',
       },
       {
-        title: 'Informe biomecánico completo',
+        title: 'Consejos personalizados de autocuidado',
         description:
-          'El paciente recibe un informe detallado con imágenes, gráficos de presiones, ángulos articulares y recomendaciones terapéuticas, que también puede compartir con otros especialistas de su equipo médico.',
+          'Al finalizar cada sesión el podólogo orienta al paciente sobre hidratación, higiene diaria, calzado adecuado y señales de alerta que requieren una consulta urgente, empoderándolo en el cuidado de sus pies.',
       },
     ],
     process: [
       {
         step: '01',
-        title: 'Anamnesis biomecánica',
+        title: 'Anamnesis y exploración general del pie',
         description:
-          'Recogemos información sobre actividad física, calzado habitual, tipo de suelo en el que se trabaja o entrena, y descripción detallada de los síntomas para orientar el análisis.',
+          'Se recoge el historial médico relevante y se realiza una inspección visual y táctil completa de ambos pies, identificando todas las áreas de hiperqueratosis, lesiones ungueales y otras alteraciones presentes.',
       },
       {
         step: '02',
-        title: 'Análisis estático del pie',
+        title: 'Reblandecimiento y preparación del tejido',
         description:
-          'Examinamos la morfología del pie en carga y descarga, la alineación de tobillos, rodillas y caderas, y la flexibilidad de las estructuras articulares y musculares.',
+          'Se utiliza agua templada, productos queratolíticos o técnicas mecánicas suaves para preparar la piel y las uñas, facilitando el trabajo posterior y garantizando el máximo confort del paciente.',
       },
       {
         step: '03',
-        title: 'Baropodometría dinámica',
+        title: 'Tratamiento de callos y durezas',
         description:
-          'El paciente camina sobre la plataforma de presiones varias veces mientras el sistema registra la distribución de presiones, los tiempos de apoyo y los centros de presión en cada fase de la marcha.',
+          'Mediante fresa de podología y bisturí de hoja estéril se eliminan con precisión las hiperqueratosis plantares y digitales, los helomas e interdigitales, sin dañar el tejido sano circundante.',
       },
       {
         step: '04',
-        title: 'Análisis de la marcha',
+        title: 'Cuidado ungueal',
         description:
-          'Complementamos el análisis baropodométrico con la observación y el registro computerizado de la marcha para evaluar el patrón de movimiento global y las compensaciones del aparato locomotor.',
+          'Se realiza el corte, limado y fresado de las uñas según su morfología y patología específica. Se tratan las onicogrifosis, onicomicosis y uñas involutadas con las técnicas más adecuadas para cada caso.',
       },
       {
         step: '05',
-        title: 'Prescripción e informe',
+        title: 'Hidratación y consejos finales',
         description:
-          'Elaboramos el informe biomecánico completo y, si procede, iniciamos el proceso de diseño y fabricación de las plantillas personalizadas basadas en los datos del análisis.',
+          'Se aplica crema hidratante podológica y se orienta al paciente sobre el período hasta la próxima visita, los productos de cuidado domiciliario recomendados y los signos que requieren atención urgente.',
       },
     ],
     conditions: [
-      'Fascitis Plantar',
-      'Metatarsalgia',
-      'Hallux Valgus',
-      'Rodilla de corredor',
-      'Dolor lumbar postural',
-      'Lesiones por sobrecarga deportiva',
-      'Tendinopatía de Aquiles',
+      'Callos y durezas',
+      'Uñas engrosadas',
+      'Helomas interdigitales',
+      'Pie diabético',
+      'Onicomicosis',
+      'Fisuras del talón',
+      'Hiperqueratosis plantar',
+      'Verrugas plantares',
     ],
     faq: [
       {
-        question: '¿Qué es un estudio biomecánico?',
+        question: '¿Con qué frecuencia debo acudir a quiropodía?',
         answer:
-          'Es un análisis completo de cómo funciona tu aparato locomotor durante la marcha y la carrera: cómo pisas, cómo se distribuyen las presiones en tu pie, cómo se alinean tus articulaciones y qué compensaciones realiza tu cuerpo. Combina exploración clínica con tecnología de medición objetiva para identificar con datos precisos las causas mecánicas del dolor o las lesiones recurrentes.',
+          'La frecuencia óptima varía de un paciente a otro. La media habitual es una visita cada 6-8 semanas en pies con tendencia a formar callos o con patología ungueal recurrente, y cada 3-4 meses para mantenimiento en pies sin problemas significativos. En pacientes diabéticos o con patología vascular se recomienda una revisión mensual como mínimo.',
       },
       {
-        question: '¿Cuándo necesito un estudio biomecánico?',
+        question: '¿Duele la quiropodía?',
         answer:
-          'Es recomendable si sufres dolor de pie, rodilla, cadera o lumbar de origen mecánico; si tienes lesiones deportivas recurrentes; si has sido diagnosticado de fascitis plantar, metatarsalgia, hallux valgus u otras patologías podológicas; si eres deportista y quieres mejorar tu rendimiento o prevenir lesiones; o si tu médico te ha recomendado plantillas sin hacerte previamente un análisis de la pisada.',
+          'En condiciones normales la quiropodía es completamente indolora. El podólogo trabaja con técnica, instrumental de precisión y conocimiento anatómico para eliminar el tejido patológico sin afectar el tejido sano. Algunos helomas muy profundos o enclavados pueden requerir algo más de tiempo y atención, pero el procedimiento se realiza siempre dentro del umbral del confort del paciente.',
       },
       {
-        question: '¿Cómo se diseñan las plantillas a partir del estudio?',
+        question: '¿Qué diferencia hay entre quiropodía y pedicura?',
         answer:
-          'Los datos del análisis baropodométrico se utilizan como base para diseñar una plantilla que redistribuya las presiones de manera óptima, corrigiendo las zonas de sobrecarga y apoyando las zonas deficitarias. En nuestro centro, diseñamos la plantilla digitalmente a partir del escáner 3D del pie y los mapas de presiones, y la fabricamos mediante impresión 3D con materiales de alta calidad.',
+          'La quiropodía es un acto sanitario realizado por un podólogo titulado universitario, con formación clínica específica para diagnosticar y tratar patologías del pie. La pedicura es un tratamiento estético que no tiene carácter sanitario y no está capacitada para tratar patologías. La diferencia es especialmente importante en pacientes con diabetes, insuficiencia vascular o neuropatía, donde un mal tratamiento puede tener consecuencias graves.',
       },
       {
-        question: '¿Cuánto tiempo dura el análisis?',
+        question: '¿Tengo que hacer algo antes de la visita de quiropodía?',
         answer:
-          'El estudio biomecánico completo —incluyendo anamnesis, exploración estática, baropodometría dinámica, análisis de la marcha y elaboración del informe— dura aproximadamente 60-90 minutos. Te recomendamos venir con el calzado habitual y, si eres deportista, traer también tu calzado de entrenamiento para realizar el análisis con ambos.',
+          'No es necesaria ninguna preparación especial. Puede venir con los pies limpios y con calzado cómodo. No es recomendable aplicar cremas o aceites antes de la visita, ya que dificultan el trabajo sobre la piel. Si tiene alguna patología vascular o nerviosa, o si toma anticoagulantes, es importante que lo comunique al podólogo al inicio de la visita.',
+      },
+    ],
+    keywords: [
+      'quiropodía Terrassa',
+      'podología Terrassa',
+      'quiropodia Terrassa',
+      'podólogo Terrassa',
+      'callos durezas Terrassa',
+      'pie diabético Terrassa',
+      'uñas engrosadas Terrassa',
+      'cuidado pies Terrassa',
+    ],
+    metaDescription:
+      'Quiropodía profesional en Terrassa. Tratamiento de callos, durezas, uñas y pie diabético. Técnicas indoloras y máxima higiene. Podofisio Clinic.',
+    relatedServices: ['cirugia-ungueal', 'estudio-biomecanico', 'ecografia'],
+  },
+
+  // ─────────────────────────────────────────────────────────────────
+  // 06 · ESTUDIO BIOMECÁNICO
+  // ─────────────────────────────────────────────────────────────────
+  {
+    slug: 'estudio-biomecanico',
+    number: '06',
+    category: 'Biomecánica',
+    title: 'Estudio Biomecánico',
+    subtitle: 'Análisis computerizado de la pisada y la marcha',
+    description:
+      'El estudio biomecánico analiza de forma computerizada la pisada, la marcha y la postura del paciente mediante plataformas de presiones y sensores inerciales, identificando alteraciones que provocan dolor y lesiones recurrentes.',
+    image:
+      'https://images.unsplash.com/photo-1531844251246-9a1bfaae09fc?q=80&w=2070&auto=format&fit=crop',
+    stats: [
+      { value: 'Análisis 3D', label: 'Cinemática del movimiento' },
+      { value: 'Plataforma de presiones', label: 'Distribución plantar' },
+      { value: 'Informe detallado', label: 'Con imágenes y datos' },
+      { value: '60 minutos', label: 'Estudio completo' },
+    ],
+    overview:
+      'El estudio biomecánico es la exploración más completa y objetiva para entender cómo se mueve el cuerpo de un paciente y por qué desarrolla determinadas lesiones o dolores. En Podofisio Clinic Terrassa realizamos estudios biomecánicos con tecnología de última generación: plataformas de presiones dinámicas que registran la distribución de cargas bajo el pie durante la marcha, escáneres 3D del pie en carga y descarga, sistemas de análisis del ángulo de marcha y de la alineación de los miembros inferiores, y valoración muscular y articular exhaustiva. Esta combinación de datos objetivos nos permite identificar con precisión alteraciones biomecánicas —hiperpronación, supinación, valgo de retropié, antepié varo, discrepancia de miembros— que están en el origen de patologías tan frecuentes como la fascitis plantar, la metatarsalgia, la tendinopatía de Aquiles, el síndrome de la cintilla iliotibial o el dolor de rodilla. El estudio biomecánico es el punto de partida indispensable para prescribir plantillas ortopédicas personalizadas con criterio científico, pero también para orientar el tratamiento fisioterapéutico, recomendar el calzado adecuado y diseñar programas de ejercicio correctivo. Ofrecemos estudios especializados para corredores, deportistas de otros ámbitos, niños en período de desarrollo y adultos con dolor crónico de causa biomecánica.',
+    benefits: [
+      {
+        title: 'Diagnóstico biomecánico objetivo',
+        description:
+          'Los datos recogidos por la plataforma de presiones y los sistemas de análisis del movimiento son completamente objetivos y cuantificables, eliminando la subjetividad inherente a la exploración clínica manual.',
+      },
+      {
+        title: 'Identificación de la causa raíz',
+        description:
+          'Muchas lesiones recurrentes tienen un origen biomecánico que no se detecta sin un análisis específico. El estudio biomecánico revela el patrón de movimiento alterado que genera la sobrecarga tisular responsable del dolor.',
+      },
+      {
+        title: 'Prescripción de plantillas con precisión',
+        description:
+          'Las plantillas diseñadas a partir de un estudio biomecánico son incomparablemente más eficaces que las plantillas estándar, pues se adaptan exactamente a las necesidades correctivas y de descarga de cada pie.',
+      },
+      {
+        title: 'Optimización del rendimiento deportivo',
+        description:
+          'Para deportistas, el estudio biomecánico permite identificar ineficiencias en la técnica de carrera o de movimiento que aumentan el riesgo de lesión y reducen el rendimiento, permitiendo correcciones específicas.',
+      },
+      {
+        title: 'Seguimiento y control de la evolución',
+        description:
+          'Repetir el estudio biomecánico tras el tratamiento permite verificar objetivamente si la alteración detectada se ha corregido y si las plantillas o el ejercicio están siendo eficaces.',
+      },
+      {
+        title: 'Informe detallado con imágenes y datos',
+        description:
+          'El paciente recibe un informe completo con imágenes de la distribución de presiones, los ángulos articulares medidos, las alteraciones detectadas y las recomendaciones terapéuticas, todo explicado de forma comprensible.',
+      },
+    ],
+    process: [
+      {
+        step: '01',
+        title: 'Anamnesis y exploración clínica',
+        description:
+          'Recogida del historial de lesiones, actividad física, calzado habitual y síntomas actuales. Exploración manual de la movilidad articular, la fuerza muscular y los rangos de movimiento de cadera, rodilla, tobillo y pie.',
+      },
+      {
+        step: '02',
+        title: 'Análisis de presiones plantares en estático y dinámico',
+        description:
+          'El paciente pisa sobre la plataforma de presiones en posición estática y camina sobre ella en condiciones naturales. El sistema registra la distribución de cargas, los picos de presión, el área de contacto y la secuencia de apoyo.',
+      },
+      {
+        step: '03',
+        title: 'Análisis de la marcha y la alineación',
+        description:
+          'Se valoran el ángulo de marcha, la alineación de rodillas y pies, el movimiento de la cadera y la pelvis, y los patrones de pronación/supinación durante el ciclo completo de la marcha mediante sistemas ópticos o inerciales.',
+      },
+      {
+        step: '04',
+        title: 'Exploración en carrera (opcional deportistas)',
+        description:
+          'Para corredores y deportistas se realiza el análisis específico en la cinta de correr, evaluando la cadencia, la longitud de zancada, el patrón de aterrizaje y la dinámica del ciclo de carrera.',
+      },
+      {
+        step: '05',
+        title: 'Informe, conclusiones y plan de tratamiento',
+        description:
+          'Se elabora un informe detallado con todos los datos recogidos. El podólogo explica los hallazgos, propone las medidas correctivas —plantillas, ejercicio, calzado, fisioterapia— y establece el plan de seguimiento.',
+      },
+    ],
+    conditions: [
+      'Fascitis plantar',
+      'Metatarsalgia',
+      'Hallux valgus',
+      'Rodilla de corredor',
+      'Dolor lumbar postural',
+      'Tendinopatía de Aquiles',
+      'Tibial posterior',
+      'Lesiones por sobrecarga',
+    ],
+    faq: [
+      {
+        question: '¿En qué consiste exactamente el estudio biomecánico?',
+        answer:
+          'El estudio biomecánico es una exploración multidisciplinar de aproximadamente 60 minutos en la que se analiza cómo se distribuyen las presiones bajo el pie, cómo se alinean los segmentos del miembro inferior y cuál es el patrón de movimiento durante la marcha. Se utilizan plataformas de presiones, escáneres 3D y sistemas de análisis angular para obtener datos objetivos que permiten identificar las alteraciones biomecánicas responsables del dolor o la lesión.',
+      },
+      {
+        question: '¿Necesito llevar mi calzado habitual al estudio biomecánico?',
+        answer:
+          'Sí, es muy recomendable traer el calzado que utiliza habitualmente para el deporte y el calzado de calle habitual, así como las plantillas que esté usando en caso de tenerlas. También es útil traer ropa deportiva cómoda que permita observar las rodillas y el movimiento de los miembros inferiores sin dificultad.',
+      },
+      {
+        question: '¿El estudio biomecánico es solo para deportistas?',
+        answer:
+          'No. El estudio biomecánico es igualmente valioso para personas sedentarias con dolor crónico de origen postural o biomecánico, para niños en edad de desarrollo con alteraciones de la marcha, y para adultos mayores con problemas de equilibrio o dolor articular. Cualquier persona con dolor de pies, rodillas, cadera o espalda de causa desconocida puede beneficiarse de un estudio biomecánico.',
+      },
+      {
+        question: '¿Cuánto tarda en estar listo el informe?',
+        answer:
+          'El informe está disponible en la misma sesión o en las 24-48 horas siguientes en formato digital, permitiendo al paciente disponer de toda la información para tomar las decisiones terapéuticas oportunas sin demora.',
       },
     ],
     keywords: [
       'estudio biomecánico Terrassa',
-      'baropodometría Terrassa',
+      'estudio pisada Terrassa',
       'análisis marcha Terrassa',
-      'podólogo biomecánica Terrassa',
-      'plantillas personalizadas Terrassa',
-      'dolor pie análisis Terrassa',
+      'biomecánica Terrassa',
+      'podología biomecánica Terrassa',
+      'análisis presiones plantares Terrassa',
+      'estudio corredor Terrassa',
+      'plataforma presiones Terrassa',
     ],
     metaDescription:
-      'Estudio biomecánico digital en Terrassa. Baropodometría, análisis 3D de la marcha e informe personalizado para tratar el dolor de pie, rodilla y espalda. Podofisio Clinic.',
-    relatedServices: ['plantillas-3d-elite', 'ecografia-clinica', 'epi-epte-guiada'],
+      'Estudio biomecánico de la pisada y la marcha en Terrassa. Análisis computerizado con plataforma de presiones. Diagnóstico preciso y tratamiento personalizado. Podofisio Clinic.',
+    relatedServices: ['plantillas', 'prp', 'cirugia-ungueal', 'tratamientos-complementarios'],
+    subServices: [
+      {
+        slug: 'plantillas',
+        title: 'Plantillas',
+        description: 'Soportes plantares personalizados mediante escáner 3D e impresión aditiva.',
+      },
+      {
+        slug: 'prp',
+        title: 'PRP',
+        description: 'Plasma Rico en Plaquetas para la regeneración de tejidos crónicamente dañados.',
+      },
+      {
+        slug: 'cirugia-ungueal',
+        title: 'Cirugía Ungueal',
+        description: 'Resolución definitiva de uñas encarnadas con cirugía menor ambulatoria.',
+      },
+      {
+        slug: 'tratamientos-complementarios',
+        title: 'Tratamientos Complementarios',
+        description: 'Presoterapia y Cryopush para la recuperación activa y el drenaje linfático.',
+      },
+    ],
   },
 
+  // ─────────────────────────────────────────────────────────────────
+  // 07 · PLANTILLAS (sub-servicio de estudio-biomecanico)
+  // ─────────────────────────────────────────────────────────────────
   {
-    slug: 'plantillas-3d-elite',
-    number: '05',
-    category: 'Ortopodología Avanzada',
-    title: 'Plantillas 3D Élite',
-    subtitle: 'Plantillas personalizadas fabricadas por impresión 3D a partir del escáner de tu pie.',
+    slug: 'plantillas',
+    number: '07',
+    category: 'Biomecánica',
+    title: 'Plantillas',
+    subtitle: 'Soportes plantares personalizados mediante impresión 3D',
     description:
-      'Nuestras plantillas Élite se diseñan digitalmente a partir del escáner 3D del pie y los datos de la baropodometría, y se fabrican mediante impresión aditiva con materiales de alta prestación para el deporte y el uso diario.',
+      'Plantillas ortopédicas completamente personalizadas diseñadas a partir del estudio biomecánico individual, fabricadas mediante escáner 3D e impresión aditiva con materiales de alta tecnología para corregir la pisada y eliminar el dolor.',
     image:
       'https://images.unsplash.com/photo-1562157873-818bc0726f68?q=80&w=2070&auto=format&fit=crop',
     stats: [
-      { value: 'Impresión 3D', label: 'Fabricación aditiva' },
-      { value: 'Escáner 3D', label: 'Precisión submilimétrica' },
-      { value: 'Deporte y calle', label: 'Versiones múltiples' },
-      { value: 'Materiales élite', label: 'Alta prestación' },
+      { value: 'Escáner 3D', label: 'Molde digital preciso' },
+      { value: 'Impresión aditiva', label: 'Fabricación personalizada' },
+      { value: 'Para deporte y calle', label: 'Modelos específicos' },
+      { value: 'Materiales élite', label: 'Tecnología punta' },
     ],
     overview:
-      'Las plantillas de farmacia o las fabricadas sobre moldes de escayola tradicionales pertenecen a otra era. En Podofisio Clinic Terrassa fabricamos plantillas mediante tecnología de impresión 3D a partir de un escáner digital tridimensional del pie del paciente y los mapas de presiones obtenidos en el estudio biomecánico. Este proceso, completamente digitalizado, elimina los errores de la fabricación manual y permite crear una plantilla que reproduce con exactitud submilimétrica la geometría del pie, colocando cada elemento corrector exactamente donde los datos indican que es necesario. Los materiales que utilizamos —termoplásticos flexibles, espumas de celda abierta y materiales compuestos de fibra de carbono para modelos deportivos— son los mismos que utilizan los equipos de atletismo y ciclismo de élite. El resultado es una plantilla ultradelgada, extremadamente precisa, duradera y cómoda, que cabe en cualquier calzado y puede fabricarse en varias versiones para distintas actividades.',
+      'Las plantillas ortopédicas personalizadas de Podofisio Clinic Terrassa representan el estándar más elevado en corrección biomecánica del pie y la marcha. A diferencia de las plantillas prefabricadas que se venden en farmacias o tiendas deportivas —que ofrecen una corrección genérica válida para nadie en particular—, nuestras plantillas se diseñan de forma individual a partir de los datos objetivos obtenidos en el estudio biomecánico: la distribución de presiones plantares, la morfología tridimensional del pie, los ángulos de alineación articular y las necesidades correctivas específicas de cada paciente. El proceso de fabricación combina el escaneado digital 3D del pie con software de diseño paramétrico y técnicas de impresión aditiva de precisión, que permiten crear una plantilla que replica con exactitud la geometría del pie y aplica las correcciones biomecánicas programadas exactamente donde son necesarias. Los materiales utilizados son polímeros de alta tecnología con propiedades de rigidez, flexibilidad y amortiguación específicamente seleccionados para cada indicación: mayor rigidez para correcciones estructurales en pie plano severo, materiales más blandos y amortiguadores para metatarsalgias y pies con déficit de tejido adiposo plantar, o materiales ligeros y resilientes para aplicaciones deportivas de alto rendimiento. Fabricamos plantillas para deporte —running, ciclismo, fútbol, tenis, esquí— y para uso cotidiano en todo tipo de calzado, incluyendo calzado formal y femenino con tacón.',
     benefits: [
       {
-        title: 'Personalización tridimensional',
+        title: 'Personalización absoluta',
         description:
-          'El escáner 3D captura la geometría exacta de tu pie en todas sus dimensiones, incluyendo el arco longitudinal, el arco transverso y la curvatura del talón, imposibles de replicar con técnicas tradicionales.',
+          'Cada plantilla se diseña y fabrica exclusivamente para el pie del paciente, a partir de los datos objetivos de su estudio biomecánico individual. No existe ninguna solución prefabricada comparable en términos de precisión correctiva.',
       },
       {
-        title: 'Precisión de fabricación aditiva',
+        title: 'Corrección biomecánica eficaz',
         description:
-          'La impresión 3D capa a capa permite colocar cada elemento corrector en exactamente la posición que dictan los datos de la baropodometría, sin las imprecisiones inherentes a la fabricación manual.',
+          'Las plantillas actúan sobre la causa raíz del dolor y las lesiones por sobrecarga, corrigiendo la alineación del pie, la distribución de presiones y los patrones de movimiento alterados que generan el problema.',
       },
       {
-        title: 'Ultradelgadas para cualquier calzado',
+        title: 'Fabricación 3D de alta precisión',
         description:
-          'Gracias a los materiales de alta tecnología, podemos fabricar plantillas de muy bajo perfil que encajan en calzado de vestir, zapatillas deportivas, botas de montaña e incluso calzado de moda.',
+          'La tecnología de impresión aditiva permite crear geometrías imposibles para los procesos de fresado convencional, logrando una adaptación perfecta al pie y una distribución de las correcciones biomecánicas más precisa y eficaz.',
       },
       {
-        title: 'Versiones para cada actividad',
+        title: 'Materiales de alto rendimiento',
         description:
-          'Diseñamos versiones específicas para running, ciclismo, fútbol, uso diario y calzado de trabajo, con materiales y geometrías optimizadas para las demandas de cada disciplina.',
+          'Seleccionamos los polímeros y materiales compuestos más avanzados del mercado para cada indicación, garantizando la durabilidad, el confort y la eficacia correctiva de las plantillas a lo largo del tiempo.',
       },
       {
-        title: 'Autocorrección progresiva',
+        title: 'Modelos para cada uso',
         description:
-          'La plantilla está diseñada para estimular la musculatura intrínseca del pie y favorecer una corrección activa de la postura, no solo compensar pasivamente el defecto como hacen las plantillas convencionales.',
+          'Fabricamos plantillas específicas para running, ciclismo, deportes de equipo, esquí y uso cotidiano, optimizadas para el tipo de calzado y la demanda biomecánica específica de cada actividad.',
       },
       {
-        title: 'Respaldadas por datos baropodométricos',
+        title: 'Control y seguimiento',
         description:
-          'Cada plantilla se fabrica a partir de los datos reales de tu pisada, no de una valoración subjetiva. Esto garantiza que la corrección aplicada es exactamente la necesaria, ni más ni menos.',
+          'Realizamos revisiones periódicas para verificar el correcto funcionamiento de las plantillas, controlar la adaptación del paciente y realizar los ajustes necesarios a lo largo del tiempo.',
       },
     ],
     process: [
       {
         step: '01',
-        title: 'Estudio biomecánico',
+        title: 'Estudio biomecánico previo',
         description:
-          'Realizamos el análisis completo de la marcha y la baropodometría para obtener los datos objetivos que guiarán el diseño de la plantilla.',
+          'La prescripción de plantillas requiere previamente la realización del estudio biomecánico completo, que aporta los datos objetivos sobre los que se fundamenta el diseño de la plantilla.',
       },
       {
         step: '02',
-        title: 'Escáner 3D del pie',
+        title: 'Escaneado 3D del pie',
         description:
-          'Capturamos la geometría tridimensional del pie mediante escáner de luz estructurada, obteniendo un modelo digital con precisión submilimétrica en segundos.',
+          'Se realiza el escáner tridimensional del pie en carga y en descarga para capturar con precisión milimétrica la geometría real del pie, incluyendo el arco plantar, el talón y la morfología de los dedos.',
       },
       {
         step: '03',
-        title: 'Diseño digital',
+        title: 'Diseño paramétrico de la plantilla',
         description:
-          'El podólogo diseña la plantilla en el software de CAD especializado, integrando el modelo 3D del pie con los mapas de presiones y las correcciones biomecánicas prescritas.',
+          'El podólogo utiliza software especializado de diseño biomecánico para programar las correcciones necesarias —cuñas, alzas, elementos de descarga, soporte del arco— sobre el modelo 3D del pie del paciente.',
       },
       {
         step: '04',
-        title: 'Fabricación aditiva',
+        title: 'Fabricación por impresión aditiva',
         description:
-          'Enviamos el archivo a nuestra impresora 3D, que fabrica la plantilla capa a capa con los materiales seleccionados según el uso previsto y las necesidades del paciente.',
+          'El archivo de diseño se envía a la impresora 3D de alta resolución donde se fabrica la plantilla capa a capa con los materiales seleccionados, con una precisión de décimas de milímetro.',
       },
       {
         step: '05',
-        title: 'Prueba y ajuste',
+        title: 'Entrega, adaptación y seguimiento',
         description:
-          'El paciente prueba las plantillas y realizamos un control baropodométrico con ellas para verificar que las correcciones son las correctas y el confort es el esperado.',
+          'Se entrega la plantilla al paciente y se guía el proceso de adaptación progresiva. Se programa una revisión a las 4-6 semanas para verificar la tolerancia, el ajuste y la eficacia correctiva.',
       },
     ],
     conditions: [
-      'Fascitis Plantar',
+      'Fascitis plantar',
       'Metatarsalgia',
-      'Hallux Valgus',
-      'Espolón Calcáneo',
+      'Hallux valgus',
+      'Espolón calcáneo',
       'Tendinopatía de Aquiles',
       'Dolor de rodilla',
       'Dolor lumbar',
@@ -639,164 +958,452 @@ export const services: ServiceData[] = [
     ],
     faq: [
       {
-        question: '¿En qué se diferencian de las plantillas de farmacia?',
+        question: '¿Cuánto duran las plantillas personalizadas?',
         answer:
-          'Las plantillas de farmacia son genéricas: están fabricadas en tallas estándar para un pie "promedio" que no existe en la realidad. Las nuestras se fabrican a partir del escáner exacto de tu pie y los datos objetivos de tu pisada, por lo que la corrección que aplican es exactamente la que necesitas. La diferencia en términos de eficacia, confort y durabilidad es comparable a la que existe entre unas gafas genéricas de quiosco y unas gafas graduadas a medida.',
+          'La durabilidad depende del material seleccionado, la actividad del paciente y el tipo de calzado. Las plantillas de materiales rígidos o semirrígidos para uso cotidiano tienen una vida media de 2-4 años. Las de running, sometidas a mayor impacto, suelen renovarse cada 12-18 meses o cada 800-1000 km. Revisamos periódicamente el estado de las plantillas y avisamos cuando es necesaria una renovación.',
       },
       {
-        question: '¿Cuánto duran las plantillas?',
+        question: '¿Las plantillas personalizadas caben en cualquier calzado?',
         answer:
-          'Las plantillas 3D Élite están diseñadas para durar entre 3 y 5 años en condiciones de uso normal (uso diario en calzado de calle). Las versiones deportivas, que soportan mayor impacto y desgaste, suelen renovarse cada 1-2 años dependiendo del volumen de entrenamiento. Recomendamos una revisión anual para comprobar que el estado de la plantilla y las necesidades biomecánicas del paciente se mantienen alineados.',
+          'Fabricamos modelos específicos para diferentes tipos de calzado: deportivo, casual, formal, de tacón y de seguridad. Es importante traer los distintos tipos de calzado que habitualmente usa para que el podólogo pueda valorar cuál es el más adecuado para cada modelo y adaptar el grosor y la morfología de la plantilla.',
       },
       {
-        question: '¿En qué calzado puedo usarlas?',
+        question: '¿Cuánto tiempo tardaré en adaptarme a las plantillas?',
         answer:
-          'Las plantillas 3D Élite están diseñadas para adaptarse al calzado habitual del paciente. Al fabricarlas, tenemos en cuenta el tipo de calzado principal en el que se usarán. Fabricamos versiones específicas para zapatillas deportivas, calzado de vestir de bajo perfil, botas de montaña, botas de fútbol o ciclismo. Si necesitas usarlas en distintos tipos de calzado, podemos fabricar varias versiones a un coste reducido.',
+          'El período de adaptación es progresivo y dura entre 2 y 4 semanas en la mayoría de los casos. Se recomienda comenzar usándolas 1-2 horas al día la primera semana e ir aumentando gradualmente hasta su uso continuado. Algunas personas sienten molestias leves durante la adaptación, que son normales y desaparecen en los primeros días.',
       },
       {
-        question: '¿Cuánto cuestan?',
+        question: '¿Necesito plantillas personalizadas o con unas de farmacia es suficiente?',
         answer:
-          'El precio de las plantillas 3D Élite incluye el estudio biomecánico completo, el escáner 3D, el diseño digital y la fabricación. Consulta nuestras tarifas actualizadas en la sección de precios de la web o contacta con nosotros para obtener un presupuesto personalizado según tus necesidades. Ofrecemos condiciones especiales para deportistas con licencia federativa y para seguros médicos concertados.',
+          'Las plantillas prefabricadas de farmacia están diseñadas para el pie medio estadístico y pueden proporcionar cierto alivio sintomático en casos muy leves, pero no corrigen las alteraciones biomecánicas individuales. Para patologías diagnosticadas —fascitis, metatarsalgia, hallux valgus— o para deportistas que necesitan una corrección precisa, las plantillas personalizadas son incomparablemente más eficaces y seguras.',
       },
     ],
     keywords: [
+      'plantillas ortopédicas Terrassa',
       'plantillas personalizadas Terrassa',
       'plantillas 3D Terrassa',
-      'ortopodología Terrassa',
-      'plantillas deportivas Terrassa',
-      'podólogo plantillas Terrassa',
-      'pie plano Terrassa',
+      'plantillas running Terrassa',
+      'plantillas biomecánicas Terrassa',
+      'ortesis plantares Terrassa',
+      'plantillas pie plano Terrassa',
+      'plantillas fascitis plantar',
     ],
     metaDescription:
-      'Plantillas personalizadas 3D en Terrassa. Diseño digital a partir de escáner del pie y baropodometría. Fabricación aditiva con materiales élite para deporte y uso diario. Podofisio Clinic.',
-    relatedServices: ['biomecanica-digital', 'ecografia-clinica', 'epi-epte-guiada'],
+      'Plantillas ortopédicas personalizadas en Terrassa. Diseño biomecánico individual y fabricación 3D de precisión para deporte y uso cotidiano. Podofisio Clinic.',
+    relatedServices: ['estudio-biomecanico', 'ecografia', 'quiropodia'],
+    parentSlug: 'estudio-biomecanico',
+    parentTitle: 'Estudio Biomecánico',
   },
 
+  // ─────────────────────────────────────────────────────────────────
+  // 08 · PRP (sub-servicio de estudio-biomecanico)
+  // ─────────────────────────────────────────────────────────────────
   {
-    slug: 'cirugia-ungueal',
-    number: '06',
-    category: 'Cirugía Podológica',
-    title: 'Cirugía Ungueal',
-    subtitle: 'Solución definitiva para la uña encarnada y las patologías ungueales sin recidivas.',
+    slug: 'prp',
+    number: '08',
+    category: 'Medicina Regenerativa',
+    title: 'PRP',
+    subtitle: 'Plasma Rico en Plaquetas para la regeneración tisular',
     description:
-      'La cirugía ungueal ambulatoria bajo anestesia local ofrece una solución permanente a la uña encarnada y otras patologías ungueales, con una intervención de 15-20 minutos, alta el mismo día y más del 95% de éxito.',
+      'El PRP utiliza la propia sangre del paciente, concentrada en factores de crecimiento plaquetarios, para estimular la regeneración natural de tejidos dañados como tendones, ligamentos y cartílago, con resultados duraderos y sin rechazo.',
     image:
-      'https://images.unsplash.com/photo-1579154235602-3c20fa4f597e?q=80&w=2070&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2080&auto=format&fit=crop',
     stats: [
-      { value: 'Ambulatoria', label: 'Sin hospitalización' },
-      { value: 'Local', label: 'Anestesia local' },
-      { value: 'Mismo día', label: 'Alta inmediata' },
-      { value: '>95%', label: 'Tasa de éxito' },
+      { value: 'Sangre propia', label: 'Sin riesgo de rechazo' },
+      { value: 'Concentración x5', label: 'Respecto a sangre normal' },
+      { value: 'Guiado por imagen', label: 'Precisión ecográfica' },
+      { value: '1-3 sesiones', label: 'Protocolo eficaz' },
     ],
     overview:
-      'La uña encarnada o onicocriptosis es una de las patologías podológicas más frecuentes y dolorosas. Cuando los tratamientos conservadores —recorte, reeducación de la uña, ortonicias— no son suficientes o la patología es recidivante, la cirugía ungueal mínimamente invasiva es la solución definitiva. En Podofisio Clinic Terrassa realizamos la matricectomía química parcial, la técnica más contrastada y con mayor tasa de éxito para el tratamiento permanente de la uña encarnada. La intervención se realiza en nuestra clínica de Terrassa en condiciones de máxima asepsia, bajo anestesia local, y el paciente recibe el alta el mismo día pudiendo desplazarse a su domicilio caminando. No es necesaria la anestesia general ni el ingreso hospitalario. En los 15-20 minutos que dura la intervención, eliminamos permanentemente la porción de uña que genera el problema y tratamos la matriz para evitar que vuelva a crecer, obteniendo una solución definitiva en más del 95% de los casos.',
+      'El Plasma Rico en Plaquetas (PRP) es una terapia de medicina regenerativa que aprovecha la capacidad natural de curación del propio organismo para tratar lesiones crónicas y degenerativas que no responden a los tratamientos convencionales. El procedimiento consiste en extraer una pequeña cantidad de sangre del propio paciente, someterla a un proceso de centrifugación que concentra las plaquetas y los factores de crecimiento hasta 5 veces su concentración sanguínea normal, y reintroducir este concentrado plaquetario directamente en la zona lesionada mediante inyección ecoguiada. Las plaquetas son células sanguíneas que contienen una enorme cantidad de factores de crecimiento —PDGF, TGF-β, IGF-1, VEGF, EGF— que actúan como señales moleculares que activan y aceleran los mecanismos naturales de reparación tisular: proliferación de fibroblastos, síntesis de colágeno, angiogénesis y modulación de la respuesta inflamatoria. Al tratarse de sangre del propio paciente, el riesgo de rechazo o reacción adversa es prácticamente nulo. La guía ecográfica es fundamental para garantizar que el concentrado plaquetario se deposita exactamente en la zona de tejido dañado, maximizando el efecto regenerador y minimizando la incomodidad del procedimiento. En Podofisio Clinic Terrassa el PRP se utiliza para el tratamiento de tendinopatías crónicas refractarias, fascitis plantar resistente, artrosis de tobillo y articulaciones del pie, y lesiones ligamentosas de larga evolución que no han respondido a otros tratamientos.',
     benefits: [
       {
-        title: 'Solución definitiva sin recidivas',
+        title: 'Regeneración real del tejido dañado',
         description:
-          'La matricectomía química parcial elimina definitivamente la porción de uña problemática. Con una tasa de éxito superior al 95%, es la solución más eficaz para uñas encarnadas recidivantes que no responden al tratamiento conservador.',
+          'A diferencia de los antiinflamatorios o los corticoides, que solo alivian el síntoma, el PRP actúa sobre la causa estimulando la producción de colágeno y la reparación tisular, con efectos duraderos.',
       },
       {
-        title: 'Cirugía ambulatoria: alta el mismo día',
+        title: 'Procedimiento autólogo y seguro',
         description:
-          'No es necesario el ingreso hospitalario. La intervención se realiza en nuestra clínica y el paciente puede marcharse caminando al terminar, retomando su vida cotidiana con normalidad en muy poco tiempo.',
+          'Al utilizarse la propia sangre del paciente, no existe riesgo de rechazo inmunológico ni de transmisión de enfermedades. Es una de las terapias regenerativas más seguras disponibles en la actualidad.',
       },
       {
-        title: 'Solo anestesia local',
+        title: 'Alta concentración de factores de crecimiento',
         description:
-          'No se utiliza anestesia general ni sedación. Aplicamos un anestésico local de acción rápida que bloquea completamente el dedo durante la intervención. El paciente está completamente despierto y puede hablar con el profesional durante todo el proceso.',
+          'La centrifugación controlada genera una concentración de plaquetas 4-6 veces superior a la de la sangre periférica normal, lo que significa una mayor disponibilidad de señales moleculares que activan la regeneración.',
       },
       {
-        title: 'Recuperación mínima (aprox. 2 semanas)',
+        title: 'Aplicación ecoguiada de precisión',
         description:
-          'En aproximadamente dos semanas el paciente puede retomar actividades deportivas. Durante ese tiempo, las curas son sencillas y pueden realizarse en casa siguiendo las instrucciones del profesional.',
+          'La inyección se realiza bajo control ecográfico en tiempo real, garantizando que el concentrado plaquetario llega exactamente a la zona de tejido dañado y no a las estructuras adyacentes sanas.',
       },
       {
-        title: 'Sin puntos de sutura',
+        title: 'Alternativa a la cirugía en patologías crónicas',
         description:
-          'La técnica de matricectomía química que utilizamos no requiere puntos de sutura. La pequeña herida cicatriza por segunda intención de forma limpia y rápida, minimizando el riesgo de complicaciones.',
+          'Para tendinopatías y lesiones crónicas que no responden a fisioterapia ni a infiltraciones convencionales, el PRP ofrece frecuentemente la solución definitiva sin necesidad de intervención quirúrgica.',
       },
       {
-        title: 'Altísima tasa de éxito',
+        title: 'Protocolo breve y ambulatorio',
         description:
-          'Más del 95% de los pacientes intervenidos no vuelven a experimentar episodios de uña encarnada en la zona tratada. Esta tasa de éxito contrasta con los tratamientos conservadores, que en casos recidivantes tienen una alta tasa de recurrencia.',
+          'El procedimiento completo dura aproximadamente 30-45 minutos y se realiza en consulta. El paciente puede marcharse a pie por su propio pie tras la sesión y reanudar su actividad habitual en 24-48 horas.',
       },
     ],
     process: [
       {
         step: '01',
-        title: 'Evaluación preoperatoria',
+        title: 'Evaluación clínica y ecográfica',
         description:
-          'Valoramos el estado de la uña, el grado de infección periungeal y el historial de episodios anteriores para confirmar que la cirugía es la indicación más adecuada y planificar la técnica.',
+          'Se valora la indicación de PRP mediante la historia clínica y una ecografía de la zona afectada. Se verifica que no existen contraindicaciones y se informa al paciente sobre el procedimiento, los beneficios esperados y las molestias normales post-inyección.',
       },
       {
         step: '02',
-        title: 'Anestesia local',
+        title: 'Extracción de sangre',
         description:
-          'Administramos anestesia local en la base del dedo mediante bloqueo digital. En pocos minutos el dedo queda completamente insensibilizado y la intervención es totalmente indolora.',
+          'Se extrae una pequeña muestra de sangre venosa del paciente (habitualmente 15-30 ml, según el protocolo) mediante punción venosa convencional, con el mismo procedimiento que un análisis rutinario.',
       },
       {
         step: '03',
-        title: 'Intervención (15-20 minutos)',
+        title: 'Centrifugación y obtención del PRP',
         description:
-          'Realizamos la avulsión de la porción ungueal comprometida y aplicamos el agente químico (fenol) sobre la zona de la matriz correspondiente para destruir las células que producen la porción de uña problemática.',
+          'La sangre se procesa en una centrífuga calibrada que separa sus componentes. Se recoge la fracción concentrada en plaquetas y factores de crecimiento, descartando el resto, y se prepara para la inyección.',
       },
       {
         step: '04',
-        title: 'Cura postoperatoria',
+        title: 'Inyección ecoguiada',
         description:
-          'Realizamos la primera cura en clínica y entregamos al paciente el protocolo de curas domiciliarias: sencillas, indoloras y que no requieren acudir a urgencias ni a enfermería externa.',
+          'Bajo guía ecográfica en tiempo real y tras la desinfección de la zona, se introduce el PRP directamente en el tejido dañado —tendón, ligamento, articulación— con una aguja fina, verificando en todo momento la posición exacta del depósito.',
       },
       {
         step: '05',
-        title: 'Seguimiento',
+        title: 'Pauta post-infiltración y seguimiento',
         description:
-          'Realizamos revisiones periódicas hasta la cicatrización completa para verificar la evolución y resolver cualquier duda. La cicatrización total suele completarse en 4-6 semanas.',
+          'Se entrega al paciente una pauta de reposo relativo y actividad progresiva para las 48-72 horas posteriores. Se programa el seguimiento clínico a las 2-4 semanas para valorar la respuesta y, en su caso, planificar una segunda sesión.',
       },
     ],
     conditions: [
-      'Uñas Encarnadas (Onicocriptosis)',
-      'Uñas Encarnadas recidivantes',
-      'Infección periungueal',
-      'Deformidades ungueales',
-      'Granuloma periungueal',
+      'Tendinopatía crónica',
+      'Fascitis plantar resistente',
+      'Artrosis de tobillo',
+      'Lesión ligamentosa',
+      'Degeneración articular',
+      'Neuroma de Morton',
     ],
     faq: [
       {
-        question: '¿Duele la cirugía?',
+        question: '¿El PRP es doloroso?',
         answer:
-          'La anestesia local bloquea completamente la sensibilidad del dedo, por lo que la intervención en sí es totalmente indolora. El único momento de discomfort es la inyección del anestésico, que produce una sensación de presión y ligero escozor durante unos segundos. Una vez que el anestésico hace efecto —en 3-5 minutos— el paciente no siente absolutamente nada durante la intervención. Tras la cirugía, cuando el anestésico desaparece (al cabo de 2-4 horas), puede aparecer una molestia moderada que se controla fácilmente con analgésicos de venta libre.',
+          'La extracción de sangre es idéntica a la de cualquier análisis rutinario. La inyección del PRP puede provocar una molestia moderada durante el procedimiento y las 24-72 horas siguientes puede haber una respuesta inflamatoria local —dolor, calor, leve hinchazón— que es completamente normal y forma parte del proceso regenerador. Esta fase inflamatoria inicial suele ceder en 3-5 días.',
       },
       {
-        question: '¿Cuánto tiempo tarda la recuperación?',
+        question: '¿Cuándo notaré la mejoría tras el PRP?',
         answer:
-          'El paciente puede caminar y hacer vida normal desde el primer día, aunque se recomienda usar calzado amplio y evitar el deporte de impacto durante las primeras 2 semanas. Las curas en casa son sencillas: lavar el dedo con agua y jabón y aplicar el apósito indicado, una vez al día. La zona suele estar completamente cicatrizada entre las 4 y 6 semanas postoperatorias.',
+          'Los efectos del PRP son progresivos, ya que actúan sobre el proceso de regeneración tisular, que es lento por naturaleza. La mayoría de pacientes comienzan a notar mejoría entre 4 y 8 semanas después de la primera sesión, con una mejoría que continúa durante 3-6 meses. Algunos casos requieren 2-3 sesiones espaciadas 4-6 semanas para obtener el resultado óptimo.',
       },
       {
-        question: '¿Puede volver a encarnar?',
+        question: '¿El PRP tiene contraindicaciones?',
         answer:
-          'Con la técnica de matricectomía química parcial, la probabilidad de que la uña vuelva a encarnar en la zona tratada es inferior al 5%. Esta técnica destruye de forma permanente las células de la matriz que producen esa porción de uña, por lo que la uña no vuelve a crecer en ese lateral. El resultado estético es muy bueno, ya que la uña queda algo más estrecha pero con una forma natural.',
+          'El PRP está contraindicado en pacientes con trastornos de la coagulación, plaquetopenia severa, tratamiento con anticoagulantes que no puedan suspenderse, infección activa en la zona a tratar o neoplasia activa. La toma de antiinflamatorios no esteroideos (AINEs) debe interrumpirse al menos una semana antes del procedimiento, ya que reducen la eficacia plaquetaria. El especialista revisará su medicación antes de la sesión.',
       },
       {
-        question: '¿Cuándo debo acudir al podólogo por una uña encarnada?',
+        question: '¿En qué se diferencia el PRP de una infiltración de cortisona?',
         answer:
-          'Debes consultar lo antes posible si la uña encarnada produce dolor intenso, si hay signos de infección (enrojecimiento, calor, supuración), si ya has tenido episodios anteriores de uña encarnada en el mismo dedo, o si tienes diabetes u otra condición que comprometa la circulación o la cicatrización. No esperes a que la infección se agrave: cuanto antes se trate, más sencilla será la solución y menor el riesgo de complicaciones.',
+          'Las infiltraciones de corticoides tienen un efecto antiinflamatorio rápido y eficaz a corto plazo, pero su uso repetido puede dañar el tendón y no actúan sobre la causa de la degeneración. El PRP, en cambio, actúa sobre los mecanismos de reparación tisular, regenerando el tejido dañado con efectos más duraderos. Son tratamientos complementarios con indicaciones diferentes, y en algunos casos pueden combinarse de forma estratégica.',
       },
     ],
     keywords: [
-      'uña encarnada Terrassa',
-      'onicocriptosis Terrassa',
-      'cirugía ungueal Terrassa',
-      'podólogo Terrassa',
-      'matricectomía Terrassa',
-      'uña encarnada cirugía Terrassa',
+      'PRP Terrassa',
+      'plasma rico en plaquetas Terrassa',
+      'medicina regenerativa Terrassa',
+      'PRP tendón Terrassa',
+      'infiltración PRP Terrassa',
+      'regeneración tisular Terrassa',
+      'PRP fascitis plantar',
+      'PRP tendinopatía Terrassa',
     ],
     metaDescription:
-      'Cirugía de uña encarnada en Terrassa. Matricectomía ambulatoria bajo anestesia local con más del 95% de éxito y alta el mismo día. Sin recidivas. Podofisio Clinic.',
-    relatedServices: ['ecografia-clinica', 'epi-epte-guiada', 'radiofrecuencia-indiba'],
+      'PRP — Plasma Rico en Plaquetas en Terrassa. Medicina regenerativa para tendinopatías crónicas y lesiones del pie y tobillo. Guiado por ecografía. Podofisio Clinic.',
+    relatedServices: ['ecografia', 'epte', 'estudio-biomecanico'],
+    parentSlug: 'estudio-biomecanico',
+    parentTitle: 'Estudio Biomecánico',
+  },
+
+  // ─────────────────────────────────────────────────────────────────
+  // 09 · CIRUGÍA UNGUEAL (sub-servicio de estudio-biomecanico)
+  // ─────────────────────────────────────────────────────────────────
+  {
+    slug: 'cirugia-ungueal',
+    number: '09',
+    category: 'Cirugía Menor',
+    title: 'Cirugía Ungueal',
+    subtitle: 'Resolución definitiva de patologías ungueales',
+    description:
+      'Cirugía ungueal ambulatoria con anestesia local para la resolución definitiva de uñas encarnadas, onicocriptosis recidivante y otras patologías ungueales, con alta el mismo día y una tasa de éxito superior al 95%.',
+    image:
+      'https://images.unsplash.com/photo-1579154235602-3c20fa4f597e?q=80&w=2070&auto=format&fit=crop',
+    stats: [
+      { value: 'Ambulatoria', label: 'Sin ingreso hospitalario' },
+      { value: 'Anestesia local', label: 'Sin sedación general' },
+      { value: 'Alta el mismo día', label: 'Vuelta a casa en horas' },
+      { value: '>95% éxito', label: 'Tasa de resolución definitiva' },
+    ],
+    overview:
+      'La cirugía ungueal en podología comprende un conjunto de procedimientos de cirugía menor ambulatoria destinados a resolver de forma definitiva las patologías ungueales que no responden al tratamiento conservador o que presentan un carácter recidivante. La indicación más frecuente es la onicocriptosis —uña encarnada— en sus diferentes grados de severidad, desde la simple encarnación sin infección hasta los casos complicados con granuloma periungueal, infección recurrente y deformidad del surco lateral. El procedimiento se realiza en la propia consulta podológica, bajo anestesia local con bloqueo digital del dedo afectado, de forma que el paciente no siente ningún dolor durante la intervención. Tras la exéresis de la porción ungueal encarnada, se aplica ácido fenol o se realiza una matrixectomía mecánica para destruir selectivamente las células de la matriz ungueal responsables del crecimiento del fragmento que provoca el problema, evitando así la recurrencia en más del 95% de los casos. La recuperación es rápida: el paciente puede caminar y retomar su actividad cotidiana el mismo día de la intervención, con un calzado amplio y cómodo. Las curas postoperatorias son sencillas, indoloras y se realizan en casa o en la clínica según las necesidades del paciente. En Podofisio Clinic Terrassa realizamos cirugía ungueal con los máximos estándares de asepsia y con técnica depurada que minimiza el tiempo de intervención, las molestias postoperatorias y el período de curación.',
+    benefits: [
+      {
+        title: 'Resolución definitiva sin recurrencia',
+        description:
+          'La matrixectomía química o mecánica elimina las células responsables del crecimiento de la porción ungueal problemática, consiguiendo una tasa de resolución definitiva superior al 95% y evitando las recidivas.',
+      },
+      {
+        title: 'Procedimiento indoloro con anestesia local',
+        description:
+          'El bloqueo digital con anestesia local garantiza que el paciente no sienta ningún dolor durante toda la intervención. La inyección del anestésico es la única molestia del proceso y dura apenas unos segundos.',
+      },
+      {
+        title: 'Ambulatoria y sin ingreso',
+        description:
+          'La cirugía se realiza íntegramente en la consulta podológica, sin necesidad de quirófano hospitalario, anestesia general ni ingreso. El paciente llega andando y se va andando el mismo día.',
+      },
+      {
+        title: 'Recuperación rápida',
+        description:
+          'Las curas postoperatorias son sencillas y se realizan en casa en pocos minutos. La mayor parte de los pacientes puede retomar el trabajo y las actividades cotidianas en 24-48 horas tras la intervención.',
+      },
+      {
+        title: 'Intervención breve y precisa',
+        description:
+          'El procedimiento dura entre 20 y 40 minutos en total. La técnica refinada del equipo de Podofisio Clinic minimiza el daño al tejido sano, reduce las molestias postoperatorias y favorece una cicatrización rápida y limpia.',
+      },
+      {
+        title: 'Tratamiento también de la infección asociada',
+        description:
+          'En los casos con granuloma periungueal o infección activa, el procedimiento quirúrgico se complementa con el tratamiento adecuado de la infección, resolviendo el problema de forma integral en una sola intervención.',
+      },
+    ],
+    process: [
+      {
+        step: '01',
+        title: 'Valoración preoperatoria',
+        description:
+          'Exploración de la uña y el surco periungeal, valoración del grado de encarnamiento, presencia de infección o granuloma, y verificación de la ausencia de contraindicaciones para la anestesia local y la cirugía menor.',
+      },
+      {
+        step: '02',
+        title: 'Preparación del campo quirúrgico',
+        description:
+          'Limpieza y desinfección exhaustiva del dedo y la zona periungeal. Aplicación de un torniquete digital para lograr un campo exangüe que mejore la visibilidad y la seguridad del procedimiento.',
+      },
+      {
+        step: '03',
+        title: 'Anestesia local',
+        description:
+          'Bloqueo digital completo del dedo mediante inyección de anestésico local en la base del dedo. Se espera a que el bloqueo sea completo —habitualmente 3-5 minutos— antes de proceder a la intervención.',
+      },
+      {
+        step: '04',
+        title: 'Exéresis y matrixectomía',
+        description:
+          'Se extirpa la porción ungueal encarnada y se trata la matriz ungueal correspondiente con ácido fenol o mediante curetaje mecánico, destruyendo selectivamente las células que generarían la recurrencia.',
+      },
+      {
+        step: '05',
+        title: 'Cura y pautas postoperatorias',
+        description:
+          'Se realiza la primera cura postoperatoria, se entrega al paciente el protocolo de curas domiciliarias, se pauta la medicación analgésica si es necesaria y se programa la revisión a los 7 días.',
+      },
+    ],
+    conditions: [
+      'Uña encarnada (onicocriptosis)',
+      'Uña encarnada recidivante',
+      'Infección periungueal',
+      'Deformidades ungueales',
+      'Granuloma periungueal',
+      'Onicocriptosis bilateral',
+    ],
+    faq: [
+      {
+        question: '¿Puedo caminar después de la cirugía ungueal?',
+        answer:
+          'Sí. El paciente puede caminar inmediatamente después de la intervención, aunque se recomienda utilizar calzado amplio y cómodo —tipo sandalia abierta o zapatilla deportiva holgada— que no presione el dedo intervenido. La actividad deportiva intensa debe posponerse entre 2 y 4 semanas según la evolución.',
+      },
+      {
+        question: '¿Cuánto tiempo tardan en cicatrizar las curas postoperatorias?',
+        answer:
+          'La herida postoperatoria suele cicatrizar completamente en 3-5 semanas. Durante este período se realizan curas cada 2-3 días con suero fisiológico y un apósito limpio. Las curas son rápidas, sencillas e indoloras, y el especialista enseña al paciente a realizarlas en casa de forma autónoma.',
+      },
+      {
+        question: '¿La uña volverá a crecer después de la cirugía?',
+        answer:
+          'En las matrixectomías parciales —las más frecuentes— solo se destruye la porción lateral de la matriz responsable del crecimiento del fragmento problemático. El resto de la uña continúa creciendo con normalidad, de forma que el resultado estético final es muy satisfactorio: la uña tiene un aspecto normal pero con el borde lateral eliminado permanentemente.',
+      },
+      {
+        question: '¿Hay riesgo de infección tras la cirugía ungueal?',
+        answer:
+          'La cirugía se realiza en condiciones de máxima asepsia para minimizar el riesgo infeccioso. En algunos casos —especialmente si había infección previa— el médico puede pautar antibiótico profiláctico. La correcta realización de las curas domiciliarias según las instrucciones es la medida más importante para prevenir complicaciones infecciosas.',
+      },
+    ],
+    keywords: [
+      'cirugía ungueal Terrassa',
+      'uña encarnada Terrassa',
+      'onicocriptosis Terrassa',
+      'podólogo cirugía Terrassa',
+      'matrixectomía Terrassa',
+      'uña encarnada tratamiento definitivo',
+      'cirugía menor podología Terrassa',
+      'granuloma periungueal Terrassa',
+    ],
+    metaDescription:
+      'Cirugía ungueal en Terrassa. Resolución definitiva de uñas encarnadas y onicocriptosis con anestesia local, sin ingreso y alta el mismo día. Podofisio Clinic.',
+    relatedServices: ['quiropodia', 'ecografia', 'estudio-biomecanico'],
+    parentSlug: 'estudio-biomecanico',
+    parentTitle: 'Estudio Biomecánico',
+  },
+
+  // ─────────────────────────────────────────────────────────────────
+  // 10 · TRATAMIENTOS COMPLEMENTARIOS (sub-servicio de estudio-biomecanico)
+  // ─────────────────────────────────────────────────────────────────
+  {
+    slug: 'tratamientos-complementarios',
+    number: '10',
+    category: 'Tratamientos Complementarios',
+    title: 'Tratamientos Complementarios',
+    subtitle: 'Presoterapia y Cryopush para la recuperación y el bienestar',
+    description:
+      'La presoterapia y el Cryopush son dos tecnologías complementarias que aceleran la recuperación muscular, mejoran el drenaje linfático y alivian la sensación de piernas pesadas mediante compresión neumática secuencial y crioterapia localizada.',
+    image:
+      'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop',
+    stats: [
+      { value: 'Presoterapia', label: 'Drenaje linfático mecánico' },
+      { value: 'Cryopush', label: 'Crioterapia de recuperación' },
+      { value: 'Sin dolor', label: 'Sesión completamente confortable' },
+      { value: 'Recuperación activa', label: 'Resultados desde la primera sesión' },
+    ],
+    overview:
+      'Los tratamientos complementarios de Podofisio Clinic Terrassa integran dos tecnologías diferenciadas y sinérgicas: la presoterapia por compresión neumática secuencial y el Cryopush de crioterapia localizada, que juntas forman un arsenal terapéutico de primer nivel para la recuperación activa, el tratamiento del sistema linfático y la reducción de la inflamación musculoesquelética. La presoterapia utiliza una bota o prenda de compresión multi-cámara conectada a un equipo electrónico que infla y desinfla las cámaras de forma secuencial, desde las zonas distales hacia las proximales, imitando y potenciando el mecanismo natural del drenaje linfático. Esta compresión neumática progresiva moviliza el líquido linfático estancado, reduce el edema, mejora el retorno venoso y proporciona una sensación inmediata de alivio y ligereza en las piernas. Es un tratamiento especialmente indicado para pacientes con insuficiencia venosa, linfedema, retención de líquidos, piernas cansadas y recuperación deportiva post-esfuerzo. El Cryopush es un sistema de crioterapia de aplicación localizada que utiliza gas frío a temperaturas controladas para reducir de forma inmediata la temperatura superficial y profunda del tejido, provocando vasoconstricción, reducción de la inflamación, analgesia rápida y disminución del espasmo muscular. Es la herramienta de elección para la recuperación inmediata post-competición, el tratamiento de lesiones agudas con componente inflamatorio intenso y el alivio de contracturas musculares. La combinación de ambas técnicas en el mismo protocolo potencia sus efectos individuales y ofrece una recuperación activa completa y eficaz.',
+    benefits: [
+      {
+        title: 'Drenaje linfático eficaz y sin esfuerzo',
+        description:
+          'La presoterapia moviliza el líquido linfático de forma mecánica y progresiva, descomprimiendo los tejidos, reduciendo el edema y proporcionando alivio inmediato en casos de linfedema, insuficiencia venosa y piernas cansadas.',
+      },
+      {
+        title: 'Recuperación deportiva acelerada',
+        description:
+          'La combinación de presoterapia y Cryopush post-esfuerzo acelera la eliminación de metabolitos del ejercicio, reduce el daño muscular inducido por el entrenamiento y acorta el tiempo de recuperación entre sesiones o competiciones.',
+      },
+      {
+        title: 'Reducción rápida de la inflamación con Cryopush',
+        description:
+          'El gas frío del Cryopush penetra más rápido y más profundo que el hielo tradicional, actuando de forma más eficaz sobre la inflamación aguda, el dolor y el espasmo muscular, sin el riesgo de quemaduras cutáneas por contacto.',
+      },
+      {
+        title: 'Mejora del retorno venoso',
+        description:
+          'La compresión neumática secuencial de la presoterapia potencia el trabajo de las válvulas venosas de los miembros inferiores, mejorando el retorno venoso y reduciendo la presión hidrostática responsable del edema vespertino.',
+      },
+      {
+        title: 'Tratamientos completamente pasivos y relajantes',
+        description:
+          'Ambos tratamientos son pasivos: el paciente simplemente permanece recostado mientras la tecnología trabaja. La sesión es muy confortable y relajante, sin esfuerzo ni molestias para el paciente.',
+      },
+      {
+        title: 'Complemento ideal de otros tratamientos',
+        description:
+          'La presoterapia y el Cryopush potencian los efectos de la fisioterapia, el ejercicio terapéutico, el Indiba y los tratamientos invasivos, integrándose de forma natural en los protocolos de recuperación integral de la clínica.',
+      },
+    ],
+    process: [
+      {
+        step: '01',
+        title: 'Valoración y selección del protocolo',
+        description:
+          'El especialista evalúa el objetivo del tratamiento —recuperación deportiva, linfedema, piernas cansadas, inflamación aguda— y selecciona la combinación de presoterapia y/o Cryopush más adecuada, así como los parámetros de presión, tiempo y temperatura.',
+      },
+      {
+        step: '02',
+        title: 'Preparación y posicionamiento',
+        description:
+          'El paciente se coloca en posición cómoda de decúbito supino o semisupino. Se colocan las botas o prendas de presoterapia sobre los miembros inferiores y se ajustan los parámetros del equipo según el protocolo establecido.',
+      },
+      {
+        step: '03',
+        title: 'Sesión de presoterapia',
+        description:
+          'El equipo inicia la secuencia de compresión-descompresión progresiva de las cámaras de la bota, de distal a proximal, con la presión y el tiempo de ciclo seleccionados. El paciente percibe una sensación de masaje envolvente y progresivo muy agradable.',
+      },
+      {
+        step: '04',
+        title: 'Aplicación de Cryopush (si indicado)',
+        description:
+          'Tras la presoterapia o de forma combinada, se aplica el Cryopush sobre las zonas específicas de mayor inflamación, dolor o contractura. El terapeuta dirige el gas frío en movimientos controlados sobre la piel durante el tiempo protocolizado.',
+      },
+      {
+        step: '05',
+        title: 'Evaluación post-sesión y pautas',
+        description:
+          'Se registra la respuesta del paciente, se evalúan los cambios observados —reducción del edema, alivio del dolor, sensación subjetiva de recuperación— y se programa la siguiente sesión y las recomendaciones de actividad.',
+      },
+    ],
+    conditions: [
+      'Insuficiencia venosa',
+      'Linfedema leve',
+      'Piernas cansadas',
+      'Retención de líquidos',
+      'Recuperación deportiva',
+      'Contracturas musculares',
+      'Post-cirugía ortopédica',
+      'Celulitis',
+    ],
+    faq: [
+      {
+        question: '¿Cuántas sesiones de presoterapia necesito?',
+        answer:
+          'Para la recuperación deportiva puntual puede ser suficiente una única sesión post-esfuerzo. Para patologías como el linfedema o la insuficiencia venosa se recomienda un ciclo inicial de 8-12 sesiones en días alternos, seguido de sesiones de mantenimiento mensuales. El especialista diseñará el protocolo óptimo para tu situación.',
+      },
+      {
+        question: '¿El Cryopush es lo mismo que aplicar hielo?',
+        answer:
+          'No. El Cryopush utiliza gas frío (CO₂ o nitrógeno) que se proyecta sobre la piel a una temperatura y caudal controlados, consiguiendo un enfriamiento más rápido, profundo y uniforme que el hielo. Además, elimina el riesgo de quemadura cutánea por contacto que tiene el hielo aplicado directamente, y permite tratar zonas más extensas en menos tiempo.',
+      },
+      {
+        question: '¿La presoterapia tiene contraindicaciones?',
+        answer:
+          'La presoterapia está contraindicada en casos de insuficiencia cardíaca descompensada, trombosis venosa profunda activa o sospechada, infección aguda en la zona a tratar, heridas abiertas, y algunas patologías oncológicas. El especialista revisará su historial antes de iniciar el tratamiento.',
+      },
+      {
+        question: '¿Puedo hacer presoterapia y Cryopush el mismo día que entreno?',
+        answer:
+          'Sí, y es de hecho la situación ideal para la recuperación deportiva. Aplicar presoterapia y Cryopush en las 2-4 horas siguientes al entrenamiento intenso o la competición maximiza los efectos regeneradores y antiinflamatorios, acelerando la recuperación para la siguiente sesión de entrenamiento.',
+      },
+    ],
+    keywords: [
+      'presoterapia Terrassa',
+      'cryopush Terrassa',
+      'drenaje linfático Terrassa',
+      'crioterapia Terrassa',
+      'recuperación deportiva Terrassa',
+      'linfedema tratamiento Terrassa',
+      'piernas cansadas tratamiento Terrassa',
+      'compresión neumática Terrassa',
+    ],
+    metaDescription:
+      'Presoterapia y Cryopush en Terrassa. Drenaje linfático, recuperación deportiva y reducción del edema. Tratamientos complementarios en Podofisio Clinic.',
+    relatedServices: ['indiba', 'recuperacion-funcional', 'estudio-biomecanico'],
+    parentSlug: 'estudio-biomecanico',
+    parentTitle: 'Estudio Biomecánico',
   },
 ];
 
+// Derived exports
+export const mainServices: ServiceData[] = allServices.filter((s) => !s.parentSlug);
+
 export function getService(slug: string): ServiceData | undefined {
-  return services.find((s) => s.slug === slug);
+  return allServices.find((s) => s.slug === slug);
 }
+
+export function getSubServices(parentSlug: string): ServiceData[] {
+  return allServices.filter((s) => s.parentSlug === parentSlug);
+}
+
+// Backward compatibility alias
+export const services = allServices;
