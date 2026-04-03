@@ -56,18 +56,11 @@ export default function Services() {
   const [isDragging, setIsDragging] = useState(false);
   const isDraggingRef = useRef(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
-  // Width of one set of services (420px + 32px gap)
-  // On mobile it's (320px + 24px gap)
   const [itemWidth, setItemWidth] = useState(452);
 
   useEffect(() => {
     const updateWidth = () => {
-      if (window.innerWidth < 768) {
-        setItemWidth(320 + 24); // 320px w + gap-6 (24px)
-      } else {
-        setItemWidth(420 + 32); // 420px w + gap-8 (32px)
-      }
+      setItemWidth(420 + 32); // 420px w + gap-8 (32px)
     };
     updateWidth();
     window.addEventListener('resize', updateWidth);
@@ -78,30 +71,20 @@ export default function Services() {
 
   const startAnimation = async (currentX: number) => {
     if (isDraggingRef.current) return;
-
-    // Normalize currentX to be within [0, -loopWidth]
     let startX = currentX % loopWidth;
     if (startX > 0) startX -= loopWidth;
-
     const remainingDistance = Math.abs(-loopWidth - startX);
-    // Adjusted speed: slower and more elegant
     const duration = 60 * (remainingDistance / loopWidth);
-
     try {
       await controls.start({
         x: [startX, -loopWidth],
-        transition: {
-          duration: duration,
-          ease: "linear",
-        },
+        transition: { duration, ease: 'linear' },
       });
-
-      // Recursive loop
       if (!isDraggingRef.current && hoveredIndex === null) {
         startAnimation(0);
       }
     } catch (e) {
-      // Animation was stopped, which is fine
+      // Animation stopped intentionally
     }
   };
 
@@ -120,13 +103,10 @@ export default function Services() {
     controls.stop();
   };
 
-  const handleDragEnd = (_: any, info: any) => {
+  const handleDragEnd = (_: any, _info: any) => {
     setIsDragging(false);
-    setTimeout(() => {
-      isDraggingRef.current = false;
-    }, 150); // Small delay to prevent subsequent click events from navigating
-    const currentX = x.get();
-    startAnimation(currentX);
+    setTimeout(() => { isDraggingRef.current = false; }, 150);
+    startAnimation(x.get());
   };
 
   return (
@@ -149,7 +129,7 @@ export default function Services() {
               Especialización en Extremidad Inferior
             </span>
             <h2 className="font-headline text-5xl md:text-7xl font-bold text-white tracking-tight leading-tight">
-              Servicios de <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-secondary">Alta Resolución</span>
+              Servicios de <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-secondary">Alta Resolución</span>
             </h2>
             <p className="mt-8 text-on-surface-variant font-light text-xl leading-relaxed max-w-2xl">
               Aplicamos biotecnología avanzada y fisioterapia invasiva para ofrecerte un abordaje clínico premium, encontrando el origen real de tu patología musculoesquelética.
@@ -158,11 +138,67 @@ export default function Services() {
         </motion.div>
       </div>
 
-      {/* Premium Infinite Carousel */}
-      <div className="py-8 px-4 md:px-8 relative z-10" ref={containerRef}>
-        {/* Subtle gradient edges to blend carrusel with background */}
-        <div className="absolute left-0 top-0 bottom-0 w-8 md:w-32 bg-gradient-to-r from-surface-lowest to-transparent z-20 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-8 md:w-32 bg-gradient-to-l from-surface-lowest to-transparent z-20 pointer-events-none" />
+      {/* ── MOBILE: native CSS scroll + snap ─────────────────────────────── */}
+      <div className="md:hidden relative z-10">
+        <div className="flex gap-4 overflow-x-auto hide-scrollbar snap-x snap-mandatory px-5 pb-4 pt-2">
+          {services.map((service) => (
+            <Link
+              key={service.slug}
+              href={`/servicios/${service.slug}`}
+              className="snap-start flex-shrink-0 w-[78vw] max-w-[300px] aspect-[3/4] relative block active:scale-[0.98] transition-transform duration-150"
+            >
+              <div className="w-full h-full glass-card rounded-[2rem] p-7 flex flex-col justify-between relative overflow-hidden border border-white/5">
+                {/* Background image */}
+                <div className="absolute inset-0 z-0">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    draggable={false}
+                    className="w-full h-full object-cover opacity-20 grayscale"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-[#080808]/75 to-transparent" />
+                </div>
+
+                {/* Top icon */}
+                <div className="relative z-10">
+                  <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
+                    <service.icon className="w-7 h-7 text-secondary" />
+                  </div>
+                </div>
+
+                {/* Bottom content */}
+                <div className="relative z-10">
+                  <h3 className="font-headline text-2xl font-bold text-white mb-3 leading-tight">
+                    {service.title}
+                  </h3>
+                  <p className="text-on-surface-variant font-light text-sm leading-relaxed line-clamp-3">
+                    {service.description}
+                  </p>
+                  <div className="mt-5 inline-flex items-center gap-2 text-secondary text-[10px] font-bold uppercase tracking-widest">
+                    Ver servicio <ArrowRight className="w-3 h-3" />
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
+          {/* Right padding sentinel */}
+          <div className="flex-shrink-0 w-1" aria-hidden="true" />
+        </div>
+
+        {/* Scroll hint dots */}
+        <div className="flex justify-center gap-1.5 mt-5">
+          {services.map((s) => (
+            <span key={s.slug} className="w-1 h-1 rounded-full bg-white/20" />
+          ))}
+        </div>
+      </div>
+
+      {/* ── DESKTOP: Framer Motion infinite carousel ──────────────────────── */}
+      <div className="hidden md:block py-8 px-8 relative z-10" ref={containerRef}>
+        {/* Fade edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-surface-lowest to-transparent z-20 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-surface-lowest to-transparent z-20 pointer-events-none" />
 
         <motion.div
           drag="x"
@@ -171,15 +207,14 @@ export default function Services() {
           animate={controls}
           onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}
-          className="flex gap-6 md:gap-8 w-max"
+          className="flex gap-8 w-max"
         >
           {[...services, ...services, ...services].map((service, index) => {
             const isHovered = hoveredIndex === index % services.length;
-            
             return (
               <div
                 key={`service-carousel-${index}-${service.title}`}
-                className="w-[320px] md:w-[420px] aspect-[3/4] md:aspect-[4/5] relative group flex-shrink-0"
+                className="w-[420px] aspect-[4/5] relative group flex-shrink-0"
                 onMouseEnter={() => setHoveredIndex(index % services.length)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
@@ -188,15 +223,9 @@ export default function Services() {
                   className="block w-full h-full"
                   draggable={false}
                   onDragStart={(e) => e.preventDefault()}
-                  onClick={(e) => {
-                    if (isDraggingRef.current) {
-                      e.preventDefault();
-                    }
-                  }}
+                  onClick={(e) => { if (isDraggingRef.current) e.preventDefault(); }}
                 >
-                  <div className="w-full h-full glass-card rounded-[2.5rem] p-8 md:p-10 flex flex-col justify-between relative overflow-hidden transition-all duration-500 border border-white/5 group-hover:border-secondary/30">
-                    
-                    {/* Background Image Effect */}
+                  <div className="w-full h-full glass-card rounded-[2.5rem] p-10 flex flex-col justify-between relative overflow-hidden transition-all duration-500 border border-white/5 group-hover:border-secondary/30">
                     <div className="absolute inset-0 w-full h-full bg-surface-base/80 z-0 pointer-events-none">
                       <img
                         src={service.image}
@@ -208,13 +237,10 @@ export default function Services() {
                       <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-[#080808]/80 to-transparent" />
                     </div>
 
-                    {/* Content Top */}
                     <div className="relative z-10 flex justify-between items-start">
-                      <div className="w-16 h-16 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center group-hover:bg-secondary/20 group-hover:border-secondary/40 transition-all duration-500 shadow-[0_0_30px_transparent] group-hover:shadow-secondary/20 group-hover:-translate-y-2">
+                      <div className="w-16 h-16 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center group-hover:bg-secondary/20 group-hover:border-secondary/40 transition-all duration-500 group-hover:-translate-y-2">
                         <service.icon className="w-8 h-8 text-white group-hover:text-secondary transition-colors duration-500" />
                       </div>
-                      
-                      {/* Interactive Arrow Component */}
                       <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 overflow-hidden group-hover:bg-secondary/20 group-hover:border-secondary transition-all duration-500">
                         <div className="relative w-5 h-5 flex items-center justify-center">
                           <ArrowRight className="absolute text-white transition-all duration-500 group-hover:translate-x-full group-hover:opacity-0" />
@@ -222,10 +248,9 @@ export default function Services() {
                         </div>
                       </div>
                     </div>
-                    
-                    {/* Content Bottom */}
+
                     <div className="relative z-10 mt-12 transition-transform duration-500 group-hover:-translate-y-2">
-                      <h3 className="font-headline text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-secondary transition-colors duration-500 pr-4">
+                      <h3 className="font-headline text-3xl font-bold text-white mb-4 group-hover:text-secondary transition-colors duration-500 pr-4">
                         {service.title}
                       </h3>
                       <p className="text-on-surface-variant font-light leading-relaxed text-base line-clamp-4">
@@ -233,10 +258,7 @@ export default function Services() {
                       </p>
                     </div>
 
-                    {/* Dynamic border gradient effect on hover */}
-                    <div 
-                      className={`absolute inset-0 -z-10 rounded-[2.5rem] opacity-0 blur-xl transition-opacity duration-500 bg-gradient-to-br from-secondary/40 via-transparent to-secondary/10 ${isHovered ? 'opacity-100' : ''}`}
-                    />
+                    <div className={`absolute inset-0 -z-10 rounded-[2.5rem] opacity-0 blur-xl transition-opacity duration-500 bg-gradient-to-br from-secondary/40 via-transparent to-secondary/10 ${isHovered ? 'opacity-100' : ''}`} />
                   </div>
                 </Link>
               </div>
@@ -245,7 +267,7 @@ export default function Services() {
         </motion.div>
       </div>
 
-      {/* Technology Section updated for premium feel */}
+      {/* Technology Section */}
       <div className="max-w-7xl mx-auto px-8 mt-24 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center bg-surface-base/30 p-8 md:p-16 rounded-[40px] border border-white/5 backdrop-blur-sm">
           <motion.div
@@ -264,8 +286,7 @@ export default function Services() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#080808] to-transparent opacity-80" />
             </div>
-            
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
@@ -276,7 +297,7 @@ export default function Services() {
               <p className="text-white text-base font-light leading-relaxed">Años de experiencia clínica combinada en el sector de alto rendimiento.</p>
             </motion.div>
           </motion.div>
-          
+
           <div className="pt-8 md:pt-0">
             <motion.h3
               initial={{ opacity: 0, y: 20 }}
@@ -287,12 +308,11 @@ export default function Services() {
             >
               Vanguardia en <span className="text-secondary italic">Tecnología Clínica</span>
             </motion.h3>
-            
             <div className="space-y-10">
               {[
                 { num: '01', title: 'Diagnóstico por Imagen Ultra-HD', desc: 'Utilizamos ecógrafos de última generación para una valoración objetiva, milimétrica y precisa de la lesión en tiempo real.' },
                 { num: '02', title: 'Terapias Invasivas Guiadas', desc: 'Sistemas EPI y EPTE para regenerar tejidos fibrilares donde las terapias manuales conservadoras no pueden llegar.' },
-                { num: '03', title: 'Laboratorio Biomecánico 3D', desc: 'Sistemas ópticos de captura de movimiento y plataformas de presiones nanométricas para un análisis dinámico real.' }
+                { num: '03', title: 'Laboratorio Biomecánico 3D', desc: 'Sistemas ópticos de captura de movimiento y plataformas de presiones nanométricas para un análisis dinámico real.' },
               ].map((item, idx) => (
                 <motion.div
                   key={`tech-${idx}-${item.num}`}
@@ -302,7 +322,7 @@ export default function Services() {
                   viewport={{ once: true }}
                   className="flex gap-8 group"
                 >
-                  <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-secondary/10 group-hover:border-secondary/30 transition-all duration-500 shadow-[0_0_15px_transparent] group-hover:shadow-secondary/10">
+                  <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-secondary/10 group-hover:border-secondary/30 transition-all duration-500">
                     <span className="text-secondary font-headline font-bold text-xl">{item.num}</span>
                   </div>
                   <div>
@@ -312,10 +332,9 @@ export default function Services() {
                 </motion.div>
               ))}
             </div>
-            
             <motion.div
               initial={{ opacity: 0, width: 0 }}
-              whileInView={{ opacity: 1, width: "100%" }}
+              whileInView={{ opacity: 1, width: '100%' }}
               transition={{ delay: 0.8, duration: 1 }}
               className="h-px bg-gradient-to-r from-secondary/50 to-transparent mt-12 mb-8 max-w-md"
             />
@@ -325,4 +344,3 @@ export default function Services() {
     </section>
   );
 }
-
