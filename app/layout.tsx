@@ -5,6 +5,10 @@ import "../src/index.css";
 import Navbar from "../src/components/Navbar";
 import Footer from "../src/components/Footer";
 import FloatingActions from "../src/components/FloatingActions";
+import Maintenance from "../src/components/Maintenance";
+
+const UNDER_CONSTRUCTION = true;
+
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.podofisioclinic.com"),
@@ -132,14 +136,18 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <div className="min-h-screen bg-background flex flex-col">
-          <Navbar />
-          <main className="flex-grow pt-20">{children}</main>
-          <Footer />
-          <FloatingActions />
-          <SpeedInsights />
-          <Analytics />
-        </div>
+        {UNDER_CONSTRUCTION ? (
+          <Maintenance />
+        ) : (
+          <div className="min-h-screen bg-background flex flex-col">
+            <Navbar />
+            <main className="flex-grow pt-20">{children}</main>
+            <Footer />
+            <FloatingActions />
+            <SpeedInsights />
+            <Analytics />
+          </div>
+        )}
       </body>
     </html>
   );
