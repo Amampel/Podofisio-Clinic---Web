@@ -58,6 +58,11 @@ export const metadata: Metadata = {
       "Clínica especializada en podología y fisioterapia en Terrassa. Fascitis plantar, uñas encarnadas, biomecánica, plantillas y más. Reserva tu visita.",
     images: ["https://www.podofisioclinic.com/og-image.jpg"],
   },
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 const jsonLd = {
