@@ -6,6 +6,7 @@ import Navbar from "../src/components/Navbar";
 import Footer from "../src/components/Footer";
 import FloatingActions from "../src/components/FloatingActions";
 import Maintenance from "../src/components/Maintenance";
+import ConstructionGuard from "../src/components/ConstructionGuard";
 
 const UNDER_CONSTRUCTION = true;
 
@@ -136,9 +137,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {UNDER_CONSTRUCTION ? (
-          <Maintenance />
-        ) : (
+        <ConstructionGuard isUnderConstruction={UNDER_CONSTRUCTION}>
           <div className="min-h-screen bg-background flex flex-col">
             <Navbar />
             <main className="flex-grow pt-20">{children}</main>
@@ -147,7 +146,7 @@ export default function RootLayout({
             <SpeedInsights />
             <Analytics />
           </div>
-        )}
+        </ConstructionGuard>
       </body>
     </html>
   );
